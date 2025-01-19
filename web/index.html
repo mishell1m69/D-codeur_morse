@@ -9,9 +9,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="styles.css">
       <script src="scripts.js"></script> 
       <style>    
-        .fa-search {font-size:200px}
+        .fa-search, .fa-arrow-right, .fa-anchor {font-size:200px}
       </style>
 
     </head>
@@ -23,7 +24,7 @@
         <div class="w3-bar w3-green w3-card w3-left-align w3-large">
 
           <!-- BARRE DE NAVIGATION SUR ÉCRANS RÉDUITS (III)-->
-          <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-16 w3-black w3-large w3-hover-white" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+          <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-16 w3-green w3-large w3-hover-white" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
           
           <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hover-white">Home</a>
           <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Lien 1</a>
@@ -40,36 +41,43 @@
       <!-- EN-TÊTE -->
       <header class="w3-container w3-black w3-center w3-padding-64">
         <h1 class="w3-margin w3-jumbo w3-padding-32">BIENVENUE</h1>
-        <button class="w3-button w3-green w3-padding-large w3-large w3-margin-top">Décoder un message</button>
+        <button class="w3-button w3-green w3-padding-large w3-large w3-margin-top mainbutton">Décoder un message</button>
         </br>
-        <button class="w3-button w3-green w3-padding-large w3-large w3-margin-top">Encoder un message</button>
+        <button class="w3-button w3-green w3-padding-large w3-large w3-margin-top mainbutton">Encoder un message</button>
       </header>
     
       <!-- GRILLE 1 -->
-      <div class="w3-row-padding w3-padding-64 w3-container w3-green">
-        <div class="w3-content">      
-          <div class="w3-half w3-left">
-            <h1>Texte 1</h1>
-            <h5 class="w3-padding-32">Sous-texte 1</h5>        
-            <p class="w3-text-grey">Contenu 1</p>
+      <div class="w3-row-padding w3-padding-64 w3-container w3-green pattern_g1">
+        <div class="w3-content">          
+          <div class="w3-twothird">
+            <h1>Principe du décodage d'un code </br>en morse..</h1>
+            <h5 class="w3-padding-32">------------------------------------------------------------------
+              ------------------------------------------------------------------------------------------
+            </h5>        
+            <p class="w3-text-grey">------------------------------------------------------------------
+              ------------------------------------------------------------------------------------------
+            </p>
           </div>
-          <div>
-            <i class="fa fa-search w3-opacity"></i>
+          <div class="w3-third w3-center">
+            <i class="fa fa-search w3-padding-64 w3-text-white"></i>
           </div>
         </div>
       </div>
     
       <!-- GRILLE 2 -->
-      <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+      <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container pattern_g2">
         <div class="w3-content">
-          <div>
-            <i class="fa fa-search w3-opacity w3-left w3-padding w3-margin-right"></i>
+          <div class="w3-third w3-center">
+            <i class="fa fa-arrow-right w3-padding-64 w3-text-green w3-margin-right"></i>
           </div>
-          <div class="w3-half w3-right">
-            <h1>Texte 2</h1>
-            <h5 class="w3-padding-32">Sous-texte 2</h5>
-          
-            <p class="w3-text-grey">Contenu2</p>
+          <div class="w3-twothird">
+            <h1>Principe de l'encryptage d'un message vers du morse...</h1>
+            <h5 class="w3-padding-32">------------------------------------------------------------------
+              ------------------------------------------------------------------------------------------
+            </h5>
+            <p class="w3-text-grey">------------------------------------------------------------------
+              ------------------------------------------------------------------------------------------
+            </p>
           </div>
         </div>
       </div>
@@ -80,8 +88,9 @@
     
       <!-- BAS DE PAGE -->
       <footer class="w3-container w3-padding-32 w3-center w3-OPA w3-black"> 
-        <p>Template by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></br>
-        And MICHEL Clément</p>
+        <p>Template made by MICHEL Clément</br>
+          using <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+        </p>
       </footer>
    
     </body>
