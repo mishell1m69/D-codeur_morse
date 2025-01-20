@@ -228,3 +228,31 @@ def dict_encode_message(arbre, message):
             encoded_msg += arbre[i]
             encoded_msg += '*'
     return encoded_msg
+
+
+def dict_decode_message(arbre, message_code):
+    """Cette fonction sert à décoder le message morse (par dictionnaire).
+
+    :param arbre: L'alphabet morse défini par un dictionnaire (de type dict)
+    :param message_code: Un code morse fourni à décoder (de type str)
+    :return: Renvoie un message décodé sous forme d'une phrase en français.
+    """
+    decoded_msg = ''
+    # On crée un autre dictionaire de l'aphabet morse
+    # pour pouvoir décoder le message plus rapidement.
+    tmp_dict = dict()
+    tmp_message_code = list(message_code.split("/"))
+    for cle, valeur in arbre.items():
+        # On inverse les cles et les valeurs de l'arbre défini par dict.
+        # Pour pouvoir directement et plus facilement retrouver une lettre.
+        tmp_dict[valeur] = cle
+    for i in tmp_message_code:
+        tmp_lettre = ""
+        for j in i:
+            if j == '*':
+                decoded_msg += tmp_dict[tmp_lettre]
+                tmp_lettre = ""
+            else:
+                tmp_lettre += j
+        decoded_msg += " "
+    return decoded_msg
