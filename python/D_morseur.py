@@ -2,6 +2,16 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 
+#  /$$$$$$            /$$                                    
+# /$$__  $$          | $$                                    
+#| $$  \ $$  /$$$$$$ | $$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$$
+#| $$$$$$$$ /$$__  $$| $$__  $$ /$$__  $$ /$$__  $$ /$$_____/
+#| $$__  $$| $$  \__/| $$  \ $$| $$  \__/| $$$$$$$$|  $$$$$$ 
+#| $$  | $$| $$      | $$  | $$| $$      | $$_____/ \____  $$
+#| $$  | $$| $$      | $$$$$$$/| $$      |  $$$$$$$ /$$$$$$$/
+#|__/  |__/|__/      |_______/ |__/       \_______/|_______/ 
+
+
 class Noeud:
     """Classe représentant un nœud dans un arbre binaire."""
 
@@ -204,9 +214,8 @@ def dictionnaire(arbre, chemin, dico):
 
 
 def dict_encode_message(arbre, message):
-    """
-    Cette fonction sert à coder un message en code morse (par dictionnaire)
-    
+    """Cette fonction sert à coder un message en code morse (par dictionnaire)
+
     :param arbre: L'alphabet morse défini par un dictionnaire (de type dict)
     :param message: Un message fourni et à encoder (de type str)
     :return: Renvoie un message sous forme d'un code morse.
@@ -219,4 +228,3 @@ def dict_encode_message(arbre, message):
             encoded_msg += arbre[i]
             encoded_msg += '*'
     return encoded_msg
-    
