@@ -214,7 +214,7 @@ def dictionnaire(arbre, chemin, dico):
 
 
 def dict_encode_message(arbre, message):
-    """Cette fonction sert à coder un message en code morse (par dictionnaire)
+    """Cette fonction sert à coder un message en code morse (par dictionnaire).
 
     :param arbre: L'alphabet morse défini par un dictionnaire (de type dict)
     :param message: Un message fourni et à encoder (de type str)
