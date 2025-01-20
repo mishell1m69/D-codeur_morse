@@ -1,3 +1,5 @@
+"""Ce fichier est destiné à l'interface du site Web."""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -31,6 +33,79 @@ class Noeud:
     def __str__(self):
         """Overwrite le str pour retourner la valeur du noeud."""
         return str(self.valeur)
+
+
+# Création de l'arbre de l'alphabet Morse 
+# comprenant les caractères, les chiffres,  
+# ainsi que les signes de ponctuation.
+parenthese_fermantre = Noeud(')')
+parenthese_ouvrante = Noeud('(', None, parenthese_fermantre)
+y = Noeud('y', parenthese_ouvrante)
+point_virgule = Noeud(';')
+none_c_droit = Noeud('', point_virgule)
+cedile = Noeud('ç')
+c = Noeud('c', cedile, none_c_droit)
+k = Noeud('k', c, y)
+signe_fraction = Noeud('/')
+x = Noeud('x', signe_fraction)
+signe_egal = Noeud('=')
+signe_moins = Noeud('-')
+six = Noeud('6', None, signe_moins)
+b = Noeud('b', six, signe_egal)
+d = Noeud('d', b, x)
+n = Noeud('n', d, k)
+g_accent_circonflexe = Noeud('ĝ')
+q = Noeud('q', g_accent_circonflexe)
+sept = Noeud('7')
+virgule = Noeud(',')
+none_z_droit = Noeud('', None, virgule)
+z = Noeud('z', sept, none_z_droit)
+g = Noeud('g', z, q)
+neuf = Noeud('9')
+zero = Noeud('0')
+none_o_droit = Noeud('', neuf, zero)
+deux_points = Noeud(':')
+huit = Noeud('8', deux_points)
+o_trema = Noeud('ö', huit)
+o = Noeud('o', o_trema, none_o_droit)
+m = Noeud('m', g, o)
+t = Noeud('t', n, m)
+e_accent_aigu = Noeud('é')
+f = Noeud('f', e_accent_aigu)
+deux = Noeud('2')
+signe_pt_interro = Noeud('?')
+tiret_bas = Noeud('_')
+eth = Noeud('ð ', signe_pt_interro, tiret_bas)
+u_trema = Noeud('ü', eth, deux)
+u = Noeud('u', f, u_trema)
+trois = Noeud('3')
+dollar = Noeud('$')
+none_v_gauche_gauche = Noeud('', None, dollar)
+none_v_gauche = Noeud('', none_v_gauche_gauche)
+v = Noeud('v', none_v_gauche, trois)
+quatre = Noeud('4')
+cinq = Noeud('5')
+h = Noeud('h', cinq, quatre)
+s = Noeud('s', h, v)
+i = Noeud('i', s, u)
+et_commercial = Noeud('&')
+guillemet_droit = Noeud('\"')
+e_accent_grave = Noeud('è', guillemet_droit)
+l = Noeud('l', et_commercial, e_accent_grave)
+point = Noeud('.')
+signe_plus = Noeud('+', None, point)
+a_e_entrelace = Noeud('æ', signe_plus)
+r = Noeud('r', l, a_e_entrelace)
+signe_apostrophe = Noeud('\'')
+un = Noeud("1", signe_apostrophe)
+j = Noeud('j', None, un)
+arobase = Noeud('@')
+a_accent_grave = Noeud('à', arobase)
+p = Noeud('p', None, a_accent_grave)
+w = Noeud('w', p, j)
+a = Noeud('a', r, w)
+e = Noeud('e', i, a)
+arbre_alphabet_morse = Noeud('start', e, t)
 
 
 def hauteur(arbre):
