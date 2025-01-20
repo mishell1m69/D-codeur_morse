@@ -34,7 +34,7 @@ class Noeud:
 
 
 def hauteur(arbre):
-    """Calcule et renvoit la hauteur d'un arbre binaire.
+    """Calcule et renvoie la hauteur d'un arbre binaire.
 
     :param arbre: Racine de l'arbre
     :return: Hauteur de l'arbre
