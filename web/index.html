@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="styles.css">
+      <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}"> -->
       <script src="scripts.js"></script> 
       <style>    
         .fa-search, .fa-arrow-right, .fa-anchor {font-size:200px}
@@ -26,37 +27,38 @@
           <!-- BARRE DE NAVIGATION SUR ÉCRANS RÉDUITS (III)-->
           <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-16 w3-green w3-large w3-hover-white" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
           
-          <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hover-white">Home</a>
-          <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Lien 1</a>
-          <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Lien 2</a>
+          <a href="index.html" class="w3-bar-item w3-button w3-padding-16 w3-hover-white">Home</a>
+          <a href="decoder.html" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Décoder</a>
+          <a href="encoder.html" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Encoder</a>
         </div>
       
         <!-- BARRE DE NAVIGATION SUR ÉCRANS RÉDUITS - OUVERTE -->
         <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-          <a href="#" class="w3-bar-item w3-button w3-padding-16">Lien 1</a>
-          <a href="#" class="w3-bar-item w3-button w3-padding-16">Lien 2</a>
+          <a href="decoder.html" class="w3-bar-item w3-button w3-padding-16">Décoder</a>
+          <a href="encoder.html" class="w3-bar-item w3-button w3-padding-16">Encoder</a>
         </div>
       </div>
     
       <!-- EN-TÊTE -->
       <header class="w3-container w3-black w3-center w3-padding-64">
         <h1 class="w3-margin w3-jumbo w3-padding-32">BIENVENUE</h1>
-        <button class="w3-button w3-green w3-padding-large w3-large w3-margin-top mainbutton">Décoder un message</button>
+        <a href="decoder.html"><button class="w3-button w3-green w3-padding-large w3-large w3-margin-top mainbutton">Décoder un message</button></a>
         </br>
-        <button class="w3-button w3-green w3-padding-large w3-large w3-margin-top mainbutton">Encoder un message</button>
+        <a href="encoder.html"><button class="w3-button w3-green w3-padding-large w3-large w3-margin-top mainbutton">Encoder un message</button></a>
       </header>
     
       <!-- GRILLE 1 -->
       <div class="w3-row-padding w3-padding-64 w3-container w3-green pattern_g1">
         <div class="w3-content">          
-          <div class="w3-twothird">
+          <div class="w3-twothird" style="text-shadow:1px 1px 0 rgb(64, 64, 64)">
             <h1>Principe du décodage d'un code </br>en morse..</h1>
-            <h5 class="w3-padding-32">------------------------------------------------------------------
-              ------------------------------------------------------------------------------------------
+            <h5 class="w3-padding-32">L'alphabet morse, ou code morse, est un code permettant de transmettre un texte à l'aide de séries d'impulsions courtes et longues. 
+              Inventé en 1835 par Samuel Morse pour la télégraphie, ce code assigne à chaque lettre, chiffre et signe de ponctuation une combinaison unique de signaux intermittents. 
+              Considéré comme le précurseur des communications numériques, le code morse a depuis le 1er février 1999 été délaissé au profit d'un système satellitaire 
+              pour les communications maritimes.
             </h5>        
-            <p class="w3-text-grey">------------------------------------------------------------------
-              ------------------------------------------------------------------------------------------
-            </p>
+            <p class="w3-text-black">C'est en 1838 que naît l'alphabet " morse " que nous connaissons. Deux types d'impulsions sont utilisés. 
+              Les impulsions courtes (notées " . ", point) qui correspondent à une impulsion électrique de 1/4 de seconde et les longues (notées " - ", trait) à une impulsion de 3/4 de seconde.
           </div>
           <div class="w3-third w3-center">
             <i class="fa fa-search w3-padding-64 w3-text-white"></i>
@@ -70,13 +72,12 @@
           <div class="w3-third w3-center">
             <i class="fa fa-arrow-right w3-padding-64 w3-text-green w3-margin-right"></i>
           </div>
-          <div class="w3-twothird">
-            <h1>Principe de l'encryptage d'un message vers du morse...</h1>
-            <h5 class="w3-padding-32">------------------------------------------------------------------
-              ------------------------------------------------------------------------------------------
+          <div class="w3-twothird" style="text-shadow:1px 1px 0 rgb(64, 64, 64)">
+            <h1 class="w3-text-green">Principe de l'encryptage d'un message vers du morse...</h1>
+            <h5 class="w3-padding-32 w3-text-green">En utilisant le même principe, nous pouvons modifier nos fonctions et algorithmes de codage afin de donner la possibilité
+              à l'utilisateur de rentrer un message en toutes lettres, et de l'encrypter en code morse. Ainsi, sa signification ne sera connue que de son créateur!
             </h5>
-            <p class="w3-text-grey">------------------------------------------------------------------
-              ------------------------------------------------------------------------------------------
+            <p class="w3-text-black">Il vous suffit de cliquer sur "Encoder un message", et de vous laisser guider.
             </p>
           </div>
         </div>
