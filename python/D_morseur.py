@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 class Noeud:
     def __init__(self, valeur, gauche = None, droit = None):
         self.valeur = valeur
@@ -11,11 +12,13 @@ class Noeud:
     def __str__(self):
         return str(self.valeur)
 
+
 def hauteur(arbre):
     if arbre is None:
         return 0
     else:
         return 1 + max(hauteur(arbre.gauche), hauteur(arbre.droit))
+
 
 def repr_graph(arbre, size=(8,8), null_node=False):
     """
@@ -77,6 +80,7 @@ def repr_graph(arbre, size=(8,8), null_node=False):
     plt.show()
     plt.close()
 
+
 def decode_lettre(arbre,code):
     for i in code:
         if i == "-":
@@ -86,6 +90,7 @@ def decode_lettre(arbre,code):
         else:
             return False
     return arbre.valeur
+
 
 def encode_lettre(lettre,chemin,arbre):
     if arbre is None:
@@ -97,6 +102,7 @@ def encode_lettre(lettre,chemin,arbre):
         chd = encode_lettre(lettre, chemin + "-", arbre.droit)
     return chg + chd
 
+
 def encode_message(message,arbre):
     encrypted=""
     for i in message:
@@ -105,6 +111,7 @@ def encode_message(message,arbre):
             encrypted+="*"
         encrypted+=encode_lettre(i, "", alpharbre)
     return encrypted+"*"
+
 
 def decode_message(message_code, arbre):
     message=""
@@ -120,6 +127,7 @@ def decode_message(message_code, arbre):
         message+=word+" "
     return message
 
+
 def dictionnaire(arbre,chemin,dico):
     if arbre is not None:
         if arbre.valeur != "":
@@ -127,3 +135,21 @@ def dictionnaire(arbre,chemin,dico):
         dictionnaire(arbre.gauche,chemin + "°",dico)
         dictionnaire(arbre.droit,chemin + "-",dico)
     return dico
+
+
+def dict_encode_message(ab_dict, message):
+    """
+    Cette fonction sert à coder un message en code morse (par dictionnaire)
+    :param ab_dict: L'alphabet morse défini par un dictionnaire (de type dict)
+    :param message: Un message fourni et à encoder 
+    :return: Renvoie un message sous forme d'un code morse.
+    """
+    encoded_msg = ''
+    for i in message:
+        if i == ' ':
+            encoded_msg += '/'
+        else:
+            encoded_msg += ab_dict[i]
+            encoded_msg += '*'
+    return encoded_msg
+
