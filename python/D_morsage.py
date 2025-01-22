@@ -1,4 +1,6 @@
 # classe Noeud
+import networkx as nx
+import matplotlib.pyplot as plt
 class Noeud:
     def __init__(self, valeur, gauche = None, droit = None):
         self.valeur = valeur

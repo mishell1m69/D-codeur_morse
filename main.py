@@ -32,9 +32,14 @@ def e_dicos():
 def encoder():
     return render_template("encoder.html")
 
-@app.route('/d_arbres_resultat')
+@app.route('/d_arbres_resultat', methods=['GET', 'POST'])
 def d_arbres_resultat():
-    return render_template("d_arbres_resultat.html")
+    message = ""
+    if request.method == 'POST':
+        text = request.form.get('texte', '')
+        from python.D_morsage import decode_message, arbre
+        message = decode_message(text, arbre)
+    return render_template("d_arbres_resultat.html", decoded_message=message)
 
 @app.route('/d_dicos_resultat')
 def d_dicos_resultat():
