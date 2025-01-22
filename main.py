@@ -32,5 +32,8 @@ def e_dicos():
 def encoder():
     return render_template("encoder.html")
 
+@app.route('/d_arbres_resultat')
+def d_arbres_resultat():
+    return render_template("d_arbres_resultat.html")
 
 app.run(debug=True)
