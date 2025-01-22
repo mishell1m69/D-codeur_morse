@@ -36,4 +36,16 @@ def encoder():
 def d_arbres_resultat():
     return render_template("d_arbres_resultat.html")
 
+@app.route('/d_dicos_resultat')
+def d_dicos_resultat():
+    return render_template("d_dicos_resultat.html")
+
+@app.route('/e_arbres_resultat')
+def e_arbres_resultat():
+    return render_template("e_arbres_resultat.html")
+
+@app.route('/e_dicos_resultat')
+def e_dicos_resultat():
+    return render_template("e_dicos_resultat.html")
+
 app.run(debug=True)
