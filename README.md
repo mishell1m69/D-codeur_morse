@@ -8,7 +8,7 @@ Sources ayant aidé à la réalisation du HTML/CSS/JS:
 -UIverse: https://uiverse.io/themrsami/dull-moose-46,       https://uiverse.io/Juanes200122/yellow-zebra-53
 
 TO DO:
-- Finir l'arbre de caractères (Vlad)
+- Finir l'arbre de caractères (Vlad) -> fait
 - Implémenter le FLask (Jao - Clément)
 - Créer les submits et textboxes (Clément)
 - ...
