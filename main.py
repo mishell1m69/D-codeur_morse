@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+from python.D_morseur import decode_message, arbre_alphabet_morse
+
 
 selected = None
 
@@ -37,8 +39,8 @@ def d_arbres_resultat():
     message = ""
     if request.method == 'POST':
         text = request.form.get('texte', '')
-        from python.D_morsage import decode_message, arbre
-        message = decode_message(text, arbre)
+        
+        message = decode_message(text, arbre_alphabet_morse)
     return render_template("d_arbres_resultat.html", decoded_message=message)
 
 @app.route('/d_dicos_resultat')
