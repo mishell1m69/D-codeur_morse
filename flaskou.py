@@ -22,7 +22,7 @@ def decoder():
 
 @app.route('/e_arbres')
 def e_arbres():
-    return render_template("e_arres.html")
+    return render_template("e_arbres.html")
 
 @app.route('/e_dicos')
 def e_dicos():
