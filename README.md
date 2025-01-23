@@ -40,7 +40,6 @@ Ce projet a été réalisé en Python (aditionellement, les bibliothèques: Flas
   -Encodez un message !</br></br>
 </ol></br>
 <li><b>Sources ayant aidé à la réalisation du HTML/CSS/JS:</b></li></br>
-Sources ayant aidé à la réalisation du HTML/CSS/JS:</br>
 -W3 Schools CSS: https://www.w3schools.com/w3css/default.asp</br>
 -UIverse: https://uiverse.io/themrsami/dull-moose-46,       https://uiverse.io/Juanes200122/yellow-zebra-53</br></br>
 MERCI d'avoir pris le temps de lire jusqu'ici, et bonnes découvertes!</br>
