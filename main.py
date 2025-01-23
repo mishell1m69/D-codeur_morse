@@ -38,8 +38,7 @@ def encoder():
 def d_arbres_resultat():
     if request.method == 'POST':
         text = request.form.get('texte', '')
-        message = decode_message(text, arbre_alphabet_morse)
-    return render_template("d_arbres_resultat.html", decoded_message=message)
+    return render_template("d_arbres_resultat.html", decoded_message = decode_message(text, arbre_alphabet_morse))
 
 @app.route('/d_dicos_resultat')
 def d_dicos_resultat():
