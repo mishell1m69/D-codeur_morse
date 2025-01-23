@@ -1,5 +1,8 @@
 # D-codeur_morse
-Programme permettant à l'utilisateur un code en morse, réalisé en Python et HTML/CSS
+
+Ce projet présente un programme permettant à l'utilisateur de décoder un code écrit en morse, 
+ou d'encrypter un texte vers du morse.
+Ce projet a été réalisé en Python (aditionellement, les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.
 
 Sources ayant aidé à la réalisation du HTML/CSS/JS:
 
