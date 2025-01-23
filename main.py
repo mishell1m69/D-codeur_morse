@@ -36,10 +36,8 @@ def encoder():
 
 @app.route('/d_arbres_resultat', methods=['GET', 'POST'])
 def d_arbres_resultat():
-    message = ""
     if request.method == 'POST':
         text = request.form.get('texte', '')
-        
         message = decode_message(text, arbre_alphabet_morse)
     return render_template("d_arbres_resultat.html", decoded_message=message)
 
