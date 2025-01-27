@@ -186,7 +186,7 @@ print(encode_lettre('R',"",alpharbre))
 
 
 def encode_message(message,arbre):
-    """
+    """Cette fonction sert à obtenir le code morse d'une phrase fournie par l'utilisateur. 
 
     :param message: Une phrase à encoder (de type str)
     :param arbre: L'arbre de l'alphabet de Morse (de type Noeud)
@@ -205,12 +205,13 @@ def encode_message(message,arbre):
     return encrypted + "*"
 
 
+# Test :
 print("\nA faire 3 : La phrase \'sos\' en code morse est : ", end="")
 print(encode_message('sos', arbre_alphabet_morse))
 
 
 def decode_message(message_code, arbre):
-    """Cette fonction sert à obtenir 
+    """Cette fonction sert à obtenir la phrase en français du code morse fourni.
     
     :param message_code: Le code morse d'une phrase fourni par l'utilisateur (de tyoe str)
     :param arbre: L'arbre de l'alphabet de Morse (de type Noeud)
@@ -231,12 +232,20 @@ def decode_message(message_code, arbre):
     return message
 
 
+# Test :
 print("\nA faire 5 donne :", decode_message('-°°°*°-°*°-*°°°-*---*/*°---*°*°°-*-°*°*/*°--°*°-*-°°*°-*°--*°-*-°*/*°-°°*°-*/*-°*°°°*°°*/*°*°°°*-*/*°-*°°°-*°*-°-°*/*-*---*°°*', alpharbre))
 
 print("\nA faire 6 :")
 
 
 def dictionnaire(arbre,chemin,dico):
+    """Cette fonction sert à créer le dictionnaire de l'arbre de l'alphabet morse.
+
+    :param arbre: L'alphabet morse donné (de type Noeud)
+    :param chemin: La variable permettant de composer le code morse de chaque lettre (de type str)
+    :param dico: La variable qui sert à créer le dictionnaire de l'alphabet morse (de type dict)
+    :return: Le dictionnaire de l'arbre de l'alphabet morse (de type dict)
+    """
     if arbre is not None:
         if arbre.valeur != "":
             dico[arbre.valeur] = chemin
@@ -253,7 +262,7 @@ print("La fonction est-elle récursive ? si oui, préciser la condition d'arrêt
 print("La fonction parcours l'arbre, de quel parcours s'agit-il ? "
       "Réponse : il s\'agit du parcours préfixe")
 
-print("\nc) codage/decodage par dictionnaire + perf :\n")
+print("\nc) codage/decodage par dictionnaire :\n")
 
 
 def dict_decode_message(arbre, message_code):
