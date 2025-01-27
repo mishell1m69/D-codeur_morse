@@ -1,5 +1,7 @@
 """Ce fichier correspond à l'intégrité du tp 
-fait avant même la distribution du projet."""
+fait avant même la distribution du projet.
+(décodage par dict à améliorer 
+(P.S. la fonction rajoute le mot "start"))"""
 
 # classe Noeud
 import networkx as nx
@@ -249,11 +251,15 @@ def dictionnaire(arbre,chemin,dico):
     if arbre is not None:
         if arbre.valeur != "":
             dico[arbre.valeur] = chemin
-        dictionnaire(arbre.gauche,chemin + "°",dico)
-        dictionnaire(arbre.droit,chemin + "-",dico)
+        # Appel récursif pour parcourir le sous-arbre gauche
+        dictionnaire(arbre.gauche, chemin + "°", dico)
+        # Appel récursif pour parcourir le sous-arbre droit
+        dictionnaire(arbre.droit, chemin + "-", dico)
     return dico
 
 
+# Création de l'arbre de l'alphabet morse 
+# avec un dictionnaire (de type dict)
 arbre_dict = dictionnaire(alpharbre, '', {})
 print(arbre_dict)
 print("La fonction est-elle récursive ? si oui, préciser la condition d'arrêt. "
@@ -262,7 +268,7 @@ print("La fonction est-elle récursive ? si oui, préciser la condition d'arrêt
 print("La fonction parcours l'arbre, de quel parcours s'agit-il ? "
       "Réponse : il s\'agit du parcours préfixe")
 
-print("\nc) codage/decodage par dictionnaire :\n")
+print("\nPour aller plus loin (codage/decodage par dictionnaire) :\n")
 
 
 def dict_decode_message(arbre, message_code):
@@ -308,7 +314,7 @@ def dict_encode_message(arbre, message):
     :return: Renvoie un message sous forme d'un code morse.
     """
     encoded_msg = ''
-    message = message.lower()
+    message = message.upper()
     for i in message:
         if i == ' ':
             encoded_msg += '/'
