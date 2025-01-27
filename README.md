@@ -2,7 +2,8 @@
 <i>Par APET Vlad, CHALENDARD Jao et MICHEL Clément</i> - Terminale</br></br>
 Ce projet présente un programme permettant à l'utilisateur de décoder un code écrit en morse, 
 ou d'encrypter un texte vers du morse.</br>
-Ce projet a été réalisé en Python (aditionellement, les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.
+Ce projet a été réalisé en Python (aditionellement, les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.</br>
+Nous avons réalisé des tests de décodage jusqu'a 100,000 caractères, et le site n'a présenté aucun signe de faiblesse, et nous supposons que l'on peut atteindre des niveaux de décodages biens supérieurs.</br></br>
 
 # <li><b>Répartition des tâches & Lancement</b></li></br>
 <i>VLAD</i> s'est chargé de:<br/>
