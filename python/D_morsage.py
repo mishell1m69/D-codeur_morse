@@ -207,7 +207,7 @@ def encode_message(message,arbre):
 
 # Test :
 print("\nA faire 3 : La phrase \'sos\' en code morse est : ", end="")
-print(encode_message('sos', arbre_alphabet_morse))
+print(encode_message('sos', alpharbre))
 
 
 def decode_message(message_code, arbre):
@@ -254,7 +254,7 @@ def dictionnaire(arbre,chemin,dico):
     return dico
 
 
-arbre_dict = dictionnaire(arbre_alphabet_morse, '', {})
+arbre_dict = dictionnaire(alpharbre, '', {})
 print(arbre_dict)
 print("La fonction est-elle récursive ? si oui, préciser la condition d'arrêt. "
       "Réponse : Elle est récursive car elle fait appel à elle-même. "
