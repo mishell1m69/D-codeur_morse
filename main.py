@@ -37,31 +37,31 @@ def e_dicos():
 @app.route('/d_arbres_resultat', methods = ['POST'])
 def d_arbres_resultat():
     text = request.form.get('texte', '')
-    ftext = decode_message(text, arbre_alphabet_morse)
-    return render_template("d_arbres_resultat.html", decoded_message = ftext)
+    ftext, time = decode_message(text, arbre_alphabet_morse)
+    return render_template("d_arbres_resultat.html", decoded_message = ftext, time = time)
 
 @app.route('/d_dicos_resultat', methods = ['POST'])
 def d_dicos_resultat():
     text = request.form.get('texte', '')
-    ftext = ftext = dict_decode_message(arbre_dict, text)
+    ftext, time = dict_decode_message(arbre_dict, text)
     print(text)
     print(ftext)
-    return render_template("d_dicos_resultat.html", decoded_message = ftext)
+    return render_template("d_dicos_resultat.html", decoded_message = ftext, time = time)
 
 @app.route('/e_arbres_resultat', methods = ['POST'])
 def e_arbres_resultat():
     text = request.form.get('texte', '')
-    ftext = encode_message(text, arbre_alphabet_morse)
+    ftext, time = encode_message(text, arbre_alphabet_morse)
     print(text)
     print(ftext)
-    return render_template("e_arbres_resultat.html", encoded_message = ftext)
+    return render_template("e_arbres_resultat.html", encoded_message = ftext, time = time)
 
 @app.route('/e_dicos_resultat', methods = ['POST'])
 def e_dicos_resultat():
     text = request.form.get('texte', '')
-    ftext = dict_encode_message(arbre_dict, text)
+    ftext, time = dict_encode_message(arbre_dict, text)
     print(text)
     print(ftext)
-    return render_template("e_dicos_resultat.html", encoded_message = ftext)
+    return render_template("e_dicos_resultat.html", encoded_message = ftext, time = time)
 
 app.run(debug=True)
