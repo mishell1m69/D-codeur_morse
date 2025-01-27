@@ -2,6 +2,9 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+import networkx as nx
+import matplotlib.pyplot as plt
+
 
 #  /$$$$$$            /$$                                    
 # /$$__  $$          | $$                                    
@@ -240,7 +243,10 @@ def encode_message(message, arbre):
     """
     encrypted = ""
     for i in message:
-        i = i.upper()
+        if i != " ":
+            i = i.lower()
+        else:
+            encrypted += "/"
         if len(encrypted) > 0:
             encrypted += "*"
         encrypted += encode_lettre(i, "", arbre)
