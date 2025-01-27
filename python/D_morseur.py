@@ -298,6 +298,11 @@ def dictionnaire(arbre, chemin, dico):
     return dico
 
 
+# Création de l'arbre de l'alphabet Morse 
+# avec un dictionnaire (de type dict)
+arbre_dict = dictionnaire(arbre_alphabet_morse, '', {})
+
+
 def dict_encode_message(arbre, message):
     """Cette fonction sert à coder un message en code morse (par dictionnaire).
 
