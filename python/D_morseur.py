@@ -1,6 +1,7 @@
 """Ce fichier est destiné à l'interface du site Web."""
 import networkx as nx
 import matplotlib.pyplot as plt
+from time import perf_counter as pf
 
 
 #  /$$$$$$            /$$                                    
@@ -163,6 +164,8 @@ def encode_message(message, arbre):
     :param arbre: Racine de l'arbre
     :return: Message encodé en code binaire
     """
+
+    t0 = pf()
     encrypted = ""
     for i in message:
         if i != " ":
@@ -172,7 +175,7 @@ def encode_message(message, arbre):
         if len(encrypted) > 0:
             encrypted += "*"
         encrypted += encode_lettre(i, "", arbre)
-    return encrypted + "*"
+    return encrypted + "*", pf() - t0
 
 
 def decode_message(message_code, arbre):
@@ -183,6 +186,7 @@ def decode_message(message_code, arbre):
     :return: Message décodé
     """
 
+    t0 = pf()
     message = ""
     wordlist_tmp = list(message_code.split("/"))
     wordlist = []
@@ -194,7 +198,7 @@ def decode_message(message_code, arbre):
             if j != '':
                 word += decode_lettre(arbre, j)
         message += word + " "
-    return message
+    return message, pf() - t0
 
 # /$$$$$$$  /$$             /$$     /$$                                         /$$                              
 #| $$__  $$|__/            | $$    |__/                                        |__/                              
@@ -235,6 +239,8 @@ def dict_encode_message(arbre, message):
     :param message: Un message fourni et à encoder (de type str)
     :return: Renvoie un message sous forme d'un code morse.
     """
+
+    t0 = pf()
     encoded_msg = ''
     for i in message:
         if i == ' ':
@@ -242,7 +248,7 @@ def dict_encode_message(arbre, message):
         else:
             encoded_msg += arbre[i]
             encoded_msg += '*'
-    return encoded_msg
+    return encoded_msg, pf() - t0
 
 
 def dict_decode_message(arbre, message_code):
@@ -252,6 +258,8 @@ def dict_decode_message(arbre, message_code):
     :param message_code: Un code morse fourni à décoder (de type str)
     :return: Renvoie un message décodé sous forme d'une phrase en français.
     """
+
+    t0 = pf()
     decoded_msg = ''
     # On crée un autre dictionaire de l'aphabet morse
     # pour pouvoir décoder le message plus rapidement.
@@ -270,4 +278,4 @@ def dict_decode_message(arbre, message_code):
             else:
                 tmp_lettre += j
         decoded_msg += " "
-    return decoded_msg
+    return decoded_msg, pf() - t0
