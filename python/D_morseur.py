@@ -1,6 +1,4 @@
 """Ce fichier est destiné à l'interface du site Web."""
-import networkx as nx
-import matplotlib.pyplot as plt
 from time import perf_counter as pf
 
 
