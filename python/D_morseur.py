@@ -168,12 +168,11 @@ def encode_message(message, arbre):
     for i in message:
         if i != " ":
             i = i.lower()
+            encrypted += encode_lettre(i, "", arbre)
+            encrypted += "*"
         else:
             encrypted += "/"
-        if len(encrypted) > 0:
-            encrypted += "*"
-        encrypted += encode_lettre(i, "", arbre)
-    return encrypted + "*", pf() - t0
+    return encrypted, pf() - t0
 
 
 def decode_message(message_code, arbre):
