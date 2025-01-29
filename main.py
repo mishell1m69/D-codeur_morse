@@ -75,15 +75,15 @@ def d_comparer():
 @app.route('/d_comparer_resultat', methods = ['POST'])
 def d_comparer_results():
     text = request.form.get('texte', '')
-    ftext_dict, time_dict = dict_encode_message(arbre_dict, text)
-    ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
-    return render_template("d_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
+    ftext_dict, time_dict = dict_decode_message(arbre_dict, text)
+    ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
+    return render_template("d_comparer_resultat.html", decoded_message_dict = ftext_dict, decoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
 
 @app.route('/e_comparer_resultat', methods = ['POST'])
 def e_comparer_results():
     text = request.form.get('texte', '')
-    ftext_dict, time_dict = dict_decode_message(arbre_dict, text)
-    ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
-    return render_template("e_comparer_resultat.html", decoded_message_dict = ftext_dict, decoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
+    ftext_dict, time_dict = dict_encode_message(arbre_dict, text)
+    ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
+    return render_template("e_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
 
 app.run(debug=True)
