@@ -131,6 +131,7 @@ def decode_lettre(arbre, code):
         elif i == "°":
             arbre = arbre.gauche
         else:
+            print('i',i)
             return False
     return arbre.valeur
 
@@ -166,7 +167,9 @@ def encode_message(message, arbre):
     t0 = pf()
     encrypted = ""
     for i in message:
-        if i != " ":
+        if i == '\n':
+            encrypted += "#*"
+        elif i != " ":
             i = i.lower()
             encrypted += encode_lettre(i, "", arbre)
             encrypted += "*"
@@ -186,19 +189,28 @@ def decode_message(message_code, arbre):
     t0 = pf()
     message = ""
     wordlist_tmp = list(message_code.split("/"))
+    print(wordlist_tmp, '\n')
     wordlist = []
     for i in wordlist_tmp:
         wordlist.append(list(i.split("*")))
-    for i in wordlist:
+    print(wordlist)
+    for words in wordlist:
         word = ""
-        for j in i:
-            if j != '':
-                lettre = decode_lettre(arbre, j)
+        for i in words:
+            if i != '' and i != "#" and i != '\n':
+                print(i, " - ", wordlist.index(words))
+                lettre = decode_lettre(arbre, i)
                 if lettre:
                     word += lettre
-                else:
+                elif lettre != '\n':
                     return "Il y a déjà des lettres dans votre message codé", pf() - t0
+            elif i == "#":
+                word += '\n'
         message += word + " "
+        """if len(word)>0 and word[-1] == '\n':
+            message += word
+        else:
+            message += word + """
     return message, pf() - t0
 
 # /$$$$$$$  /$$             /$$     /$$                                         /$$                              

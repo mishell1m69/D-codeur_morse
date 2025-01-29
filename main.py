@@ -43,10 +43,9 @@ def d_arbres_resultat():
         file = request.files['file']
         text = file.read().decode('utf-8')
         ftext, time = decode_message(text, arbre_alphabet_morse)
-        with open("fichier_decode.txt", "w", encoding="utf-8") as f:
+        with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-            f.write("\nEn {time}s.")
-        return send_file("fichier_decode.txt", as_attachment=True)
+        return send_file("fichier_decode_arbre.txt", as_attachment=True)
     
 
 @app.route('/d_dicos_resultat', methods = ['POST'])
@@ -59,10 +58,9 @@ def d_dicos_resultat():
         file = request.files['file']
         text = file.read().decode('utf-8')
         ftext, time = dict_decode_message(arbre_dict, text)
-        with open("fichier_decode.txt", "w", encoding="utf-8") as f:
+        with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-            f.write("\nEn {time}s.")
-        return send_file("fichier_decode.txt", as_attachment=True)
+        return send_file("fichier_decode_dicos.txt", as_attachment=True)
 
 @app.route('/e_arbres_resultat', methods = ['POST'])
 def e_arbres_resultat():
@@ -75,10 +73,9 @@ def e_arbres_resultat():
         file = request.files['file']
         text = file.read().decode('utf-8')
         ftext, time = encode_message(text, arbre_alphabet_morse)
-        with open("fichier_encode.txt", "w", encoding="utf-8") as f:
+        with open("fichier_encode_arbre.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-            f.write("\nEn {time}s.")
-        return send_file("fichier_encode.txt", as_attachment=True)
+        return send_file("fichier_encode_arbre.txt", as_attachment=True)
 
 @app.route('/e_dicos_resultat', methods = ['POST'])
 def e_dicos_resultat():
@@ -90,10 +87,9 @@ def e_dicos_resultat():
         file = request.files['file']
         text = file.read().decode('utf-8')
         ftext, time = dict_encode_message(arbre_dict, text)
-        with open("fichier_encode.txt", "w", encoding="utf-8") as f:
+        with open("fichier_encode_dicos.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-            f.write("\nEn {time}s.")
-        return send_file("fichier_encode.txt", as_attachment=True)
+        return send_file("fichier_encode_dicos.txt", as_attachment=True)
 
 @app.route('/comparer')
 def comparer():
