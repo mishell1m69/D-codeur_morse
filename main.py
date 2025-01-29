@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from python.D_morseur import decode_message, encode_message, dict_encode_message, dict_decode_message, arbre_alphabet_morse, arbre_dict
-
 
 selected = None
 
@@ -36,29 +35,65 @@ def e_dicos():
 
 @app.route('/d_arbres_resultat', methods = ['POST'])
 def d_arbres_resultat():
-    text = request.form.get('texte', '')
-    ftext, time = decode_message(text, arbre_alphabet_morse)
-    return render_template("d_arbres_resultat.html", decoded_message = ftext, time = time)
+    if 'file' not in request.files:
+        text = request.form.get('texte', '')
+        ftext, time = decode_message(text, arbre_alphabet_morse)
+        return render_template("d_arbres_resultat.html", decoded_message = ftext, time = time)
+    else:
+        file = request.files['file']
+        text = file.read().decode('utf-8')
+        ftext, time = decode_message(text, arbre_alphabet_morse)
+        with open("fichier_decode.txt", "w", encoding="utf-8") as f:
+            f.write(ftext)
+            f.write("\nEn {time}s.")
+        return send_file("fichier_decode.txt", as_attachment=True)
+    
 
 @app.route('/d_dicos_resultat', methods = ['POST'])
 def d_dicos_resultat():
-    text = request.form.get('texte', '')
-    ftext, time = dict_decode_message(arbre_dict, text)
-    return render_template("d_dicos_resultat.html", decoded_message = ftext, time = time)
+    if 'file' not in request.files:
+        text = request.form.get('texte', '')
+        ftext, time = dict_decode_message(arbre_dict, text)
+        return render_template("d_dicos_resultat.html", decoded_message = ftext, time = time)
+    else:
+        file = request.files['file']
+        text = file.read().decode('utf-8')
+        ftext, time = dict_decode_message(arbre_dict, text)
+        with open("fichier_decode.txt", "w", encoding="utf-8") as f:
+            f.write(ftext)
+            f.write("\nEn {time}s.")
+        return send_file("fichier_decode.txt", as_attachment=True)
 
 @app.route('/e_arbres_resultat', methods = ['POST'])
 def e_arbres_resultat():
-    text = request.form.get('texte', '')
-    ftext, time = encode_message(text, arbre_alphabet_morse)
-    return render_template("e_arbres_resultat.html", encoded_message = ftext, time = time)
+    if 'file' not in request.files:
+        print("oh")
+        text = request.form.get('texte', '')
+        ftext, time = encode_message(text, arbre_alphabet_morse)
+        return render_template("e_arbres_resultat.html", encoded_message = ftext, time = time)
+    else:
+        file = request.files['file']
+        text = file.read().decode('utf-8')
+        ftext, time = encode_message(text, arbre_alphabet_morse)
+        with open("fichier_encode.txt", "w", encoding="utf-8") as f:
+            f.write(ftext)
+            f.write("\nEn {time}s.")
+        return send_file("fichier_encode.txt", as_attachment=True)
 
 @app.route('/e_dicos_resultat', methods = ['POST'])
 def e_dicos_resultat():
-    text = request.form.get('texte', '')
-    ftext, time = dict_encode_message(arbre_dict, text)
-    print(text)
-    print(ftext)
-    return render_template("e_dicos_resultat.html", encoded_message = ftext, time = time)
+    if 'file' not in request.files:
+        text = request.form.get('texte', '')
+        ftext, time = dict_encode_message(arbre_dict, text)
+        return render_template("e_dicos_resultat.html", encoded_message = ftext, time = time)
+    else:
+        file = request.files['file']
+        text = file.read().decode('utf-8')
+        ftext, time = dict_encode_message(arbre_dict, text)
+        with open("fichier_encode.txt", "w", encoding="utf-8") as f:
+            f.write(ftext)
+            f.write("\nEn {time}s.")
+        return send_file("fichier_encode.txt", as_attachment=True)
 
 @app.route('/comparer')
 def comparer():
