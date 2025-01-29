@@ -72,4 +72,12 @@ def e_comparer():
 def d_comparer():
     return render_template("d_comparer.html")
 
+@app.route('/d_comparer_resultat', methods = ['POST'])
+def d_comparer_results():
+    return render_template("d_comparer_resultat.html")
+
+@app.route('/e_comparer_resultat', methods = ['POST'])
+def e_comparer_results():
+    return render_template("e_comparer_resultat.html")
+
 app.run(debug=True)
