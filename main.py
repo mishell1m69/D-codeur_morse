@@ -44,16 +44,12 @@ def d_arbres_resultat():
 def d_dicos_resultat():
     text = request.form.get('texte', '')
     ftext, time = dict_decode_message(arbre_dict, text)
-    print(text)
-    print(ftext)
     return render_template("d_dicos_resultat.html", decoded_message = ftext, time = time)
 
 @app.route('/e_arbres_resultat', methods = ['POST'])
 def e_arbres_resultat():
     text = request.form.get('texte', '')
     ftext, time = encode_message(text, arbre_alphabet_morse)
-    print(text)
-    print(ftext)
     return render_template("e_arbres_resultat.html", encoded_message = ftext, time = time)
 
 @app.route('/e_dicos_resultat', methods = ['POST'])
