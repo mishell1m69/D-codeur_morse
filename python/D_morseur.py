@@ -194,7 +194,11 @@ def decode_message(message_code, arbre):
         word = ""
         for j in i:
             if j != '':
-                word += decode_lettre(arbre, j)
+                lettre = decode_lettre(arbre, j)
+                if lettre:
+                    word += lettre
+                else:
+                    return "Il y a déjà des lettres dans votre message codé", pf() - t0
         message += word + " "
     return message, pf() - t0
 
@@ -241,6 +245,7 @@ def dict_encode_message(arbre, message):
     t0 = pf()
     encoded_msg = ''
     for i in message:
+        i = i.lower()
         if i == ' ':
             encoded_msg += '/'
         else:
@@ -271,7 +276,8 @@ def dict_decode_message(arbre, message_code):
         tmp_lettre = ""
         for j in i:
             if j == '*':
-                decoded_msg += tmp_dict[tmp_lettre]
+                if tmp_lettre != '':
+                    decoded_msg += tmp_dict[tmp_lettre]
                 tmp_lettre = ""
             else:
                 tmp_lettre += j
