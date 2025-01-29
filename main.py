@@ -60,4 +60,16 @@ def e_dicos_resultat():
     print(ftext)
     return render_template("e_dicos_resultat.html", encoded_message = ftext, time = time)
 
+@app.route('/comparer')
+def comparer():
+    return render_template("comparer.html")
+
+@app.route('/e_comparer')
+def e_comparer():
+    return render_template("e_comparer.html")
+
+@app.route('/d_comparer')
+def d_comparer():
+    return render_template("d_comparer.html")
+
 app.run(debug=True)
