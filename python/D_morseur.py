@@ -40,7 +40,7 @@ parenthese_fermantre = Noeud(')')
 parenthese_ouvrante = Noeud('(', None, parenthese_fermantre)
 y = Noeud('y', parenthese_ouvrante)
 point_virgule = Noeud(';')
-none_c_droit = Noeud('tutu', point_virgule)
+none_c_droit = Noeud('', point_virgule)
 cedile = Noeud('ç')
 c = Noeud('c', cedile, none_c_droit)
 k = Noeud('k', c, y)
@@ -203,7 +203,7 @@ def decode_message(message_code, arbre):
                 if lettre:
                     word += lettre
                 else:
-                    return "Attention, votre message contient au moins un caractère non encodable :" + i, pf() - t0
+                    return "Attention, votre message contient au moins un caractère non décodable : " + i, pf() - t0
             elif i == "#":
                 word += '\n'
         message += word + " "
@@ -260,8 +260,10 @@ def dict_encode_message(arbre, message):
         if i == ' ':
             encoded_msg += '/'
         else:
-            encoded_msg += arbre[i]
-            encoded_msg += '*'
+            if i in arbre.keys():
+                encoded_msg += arbre[i] + "*"
+            else:
+                return "Attention, votre message contient au moins un caractère non encodable : " + i, pf() - t0
     return encoded_msg, pf() - t0
 
 
@@ -284,13 +286,21 @@ def dict_decode_message(arbre, message_code):
         # Pour pouvoir directement et plus facilement retrouver une lettre.
         tmp_dict[valeur] = cle
     for i in tmp_message_code:
+        print("i", i)
         tmp_lettre = ""
         for j in i:
+            print("j",j)
             if j == '*':
                 if tmp_lettre != '':
-                    decoded_msg += tmp_dict[tmp_lettre]
+                    print(tmp_lettre)
+                    if tmp_lettre in tmp_dict.keys():
+                        decoded_msg += tmp_dict[tmp_lettre]
+                    else:
+                        return "Attention, votre message contient au moins un caractère non décodablee : " + tmp_lettre, pf() - t0
                 tmp_lettre = ""
-            else:
+            elif j == "-" or j == "°":
                 tmp_lettre += j
+            else:
+                return "Attention, votre message contient au moins un caractère non décodable : " + j, pf() - t0
         decoded_msg += " "
     return decoded_msg, pf() - t0
