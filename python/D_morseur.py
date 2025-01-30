@@ -131,7 +131,6 @@ def decode_lettre(arbre, code):
         elif i == "°":
             arbre = arbre.gauche
         else:
-            print('i',i)
             return False
     return arbre.valeur
 
@@ -145,7 +144,7 @@ def encode_lettre(lettre, chemin, arbre):
     :return: Code binaire pour la lettre
     """
     if arbre is None:
-        return ""
+        return False
     elif arbre.valeur == lettre:
         return chemin
     else:
@@ -171,8 +170,11 @@ def encode_message(message, arbre):
             encrypted += "#*"
         elif i != " ":
             i = i.lower()
-            encrypted += encode_lettre(i, "", arbre)
-            encrypted += "*"
+            lettre = encode_lettre(i, "", arbre)
+            if lettre:
+                encrypted += lettre + "*"
+            else:
+                return "Attention, votre message contient au moins un caractère non encodable : " + i, pf() - t0
         else:
             encrypted += "/"
     return encrypted, pf() - t0
@@ -189,21 +191,18 @@ def decode_message(message_code, arbre):
     t0 = pf()
     message = ""
     wordlist_tmp = list(message_code.split("/"))
-    print(wordlist_tmp, '\n')
     wordlist = []
     for i in wordlist_tmp:
         wordlist.append(list(i.split("*")))
-    print(wordlist)
     for words in wordlist:
         word = ""
         for i in words:
             if i != '' and i != "#" and i != '\n':
-                print(i, " - ", wordlist.index(words))
                 lettre = decode_lettre(arbre, i)
                 if lettre:
                     word += lettre
-                elif lettre != '\n':
-                    return "Il y a déjà des lettres dans votre message codé", pf() - t0
+                else:
+                    return "Attention, votre message contient au moins un caractère non encodable :" + i, pf() - t0
             elif i == "#":
                 word += '\n'
         message += word + " "
