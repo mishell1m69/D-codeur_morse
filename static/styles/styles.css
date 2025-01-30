@@ -14,7 +14,7 @@
   
 .mainbutton:active {
     top: 4px;
-    box-shadow: #02d842ab 0px 3px 2px,#8f8f8f 0px 3px 5px;
+    box-shadow: #000000ab 0px 3px 2px,#8f8f8f 0px 3px 5px;
   }
 
   /*
