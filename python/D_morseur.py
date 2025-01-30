@@ -40,7 +40,7 @@ parenthese_fermantre = Noeud(')')
 parenthese_ouvrante = Noeud('(', None, parenthese_fermantre)
 y = Noeud('y', parenthese_ouvrante)
 point_virgule = Noeud(';')
-none_c_droit = Noeud('', point_virgule)
+none_c_droit = Noeud('tutu', point_virgule)
 cedile = Noeud('ç')
 c = Noeud('c', cedile, none_c_droit)
 k = Noeud('k', c, y)
@@ -143,8 +143,9 @@ def encode_lettre(lettre, chemin, arbre):
     :param arbre: Racine de l'arbre
     :return: Code binaire pour la lettre
     """
+    #print(arbre.valeur, arbre.gauche, arbre.droit)
     if arbre is None:
-        return False
+        return ""
     elif arbre.valeur == lettre:
         return chemin
     else:
