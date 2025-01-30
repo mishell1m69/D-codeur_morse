@@ -65,7 +65,6 @@ def d_dicos_resultat():
 @app.route('/e_arbres_resultat', methods = ['POST'])
 def e_arbres_resultat():
     if 'file' not in request.files:
-        print("oh")
         text = request.form.get('texte', '')
         ftext, time = encode_message(text, arbre_alphabet_morse)
         return render_template("e_arbres_resultat.html", encoded_message = ftext, time = time)
