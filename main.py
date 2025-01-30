@@ -104,16 +104,33 @@ def d_comparer():
 
 @app.route('/d_comparer_resultat', methods = ['POST'])
 def d_comparer_results():
-    text = request.form.get('texte', '')
-    ftext_dict, time_dict = dict_decode_message(arbre_dict, text)
-    ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
-    return render_template("d_comparer_resultat.html", decoded_message_dict = ftext_dict, decoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
+    if 'file' not in request.files:
+        text = request.form.get('texte', '')
+        ftext_dict, time_dict = dict_decode_message(arbre_dict, text)
+        ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
+        return render_template("d_comparer_resultat.html", decoded_message_dict = ftext_dict, decoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
+    else:
+        file = request.files['file']
+        text = file.read().decode('utf-8')
+        ftext_dict, time_dict = decode_message(text, arbre_alphabet_morse)
+        ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
+        with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
+            f.write(ftext_arbre)
+        with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
+            f.write(ftext_dict)
+        with open("fichier_decode_temps.txt", "w", encoding="utf-8") as f:
+            f.write("Le fichier 'fichier_decode_arbre.txt' a été généré en " + str(time_arbre) + "s.")
+            f.write("Le fichier 'fichier_decode_dicos.txt' a été généré en " + str(time_dict) + "s.")
+        return send_file("fichier_decode_arbre.txt", as_attachment=True)
 
 @app.route('/e_comparer_resultat', methods = ['POST'])
 def e_comparer_results():
-    text = request.form.get('texte', '')
-    ftext_dict, time_dict = dict_encode_message(arbre_dict, text)
-    ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
-    return render_template("e_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
+    if 'file' not in request.files:
+        text = request.form.get('texte', '')
+        ftext_dict, time_dict = dict_encode_message(arbre_dict, text)
+        ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
+        return render_template("e_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
+    else:
+        pass
 
 app.run(debug=True)

@@ -143,7 +143,6 @@ def encode_lettre(lettre, chemin, arbre):
     :param arbre: Racine de l'arbre
     :return: Code binaire pour la lettre
     """
-    #print(arbre.valeur, arbre.gauche, arbre.droit)
     if arbre is None:
         return ""
     elif arbre.valeur == lettre:
@@ -286,13 +285,10 @@ def dict_decode_message(arbre, message_code):
         # Pour pouvoir directement et plus facilement retrouver une lettre.
         tmp_dict[valeur] = cle
     for i in tmp_message_code:
-        print("i", i)
         tmp_lettre = ""
         for j in i:
-            print("j",j)
             if j == '*':
                 if tmp_lettre != '':
-                    print(tmp_lettre)
                     if tmp_lettre in tmp_dict.keys():
                         decoded_msg += tmp_dict[tmp_lettre]
                     else:
