@@ -35,14 +35,14 @@
           <a href="/" class="w3-bar-item w3-button w3-padding-16 w3-hover-white">Home</a>
           <a href="decoder" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Décoder</a>
           <a href="encoder" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Encoder</a>
-          <a href="comparer" class="w3-bar-item w3-button w3-padding-16">Comparer</a>
+          <a href="comparer" class="w3-bar-item w3-button w3-hide-small w3-padding-16 w3-hover-white">Comparer</a>
         </div>
       
         <!-- BARRE DE NAVIGATION SUR ÉCRANS RÉDUITS - OUVERTE -->
-        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-          <a href="decoder" class="w3-bar-item w3-button w3-padding-16">Décoder</a>
-          <a href="encoder" class="w3-bar-item w3-button w3-padding-16">Encoder</a>
-          <a href="comparer" class="w3-bar-item w3-button w3-padding-16">Comparer</a>
+        <div id="navDemo" class="w3-bar-block w3-green w3-hide w3-hide-large w3-hide-medium w3-large">
+          <a href="decoder" class="w3-bar-item w3-button w3-padding-16 w3-hover-white">Décoder</a>
+          <a href="encoder" class="w3-bar-item w3-button w3-padding-16 w3-hover-white">Encoder</a>
+          <a href="comparer" class="w3-bar-item w3-button w3-padding-16 w3-hover-white">Comparer</a>
         </div>
       </div>
     
@@ -53,17 +53,17 @@
       </header>
 
       <!-- GRILLE 1 -->
-      <div class="w3-row-padding w3-padding-64 w3-container w3-green pattern_g1">
+      <div class="w3-row-padding w3-padding-64 w3-container w3-green">
         <div class="w3-content">          
-          <div style="text-shadow:1px 1px 0 rgb(64, 64, 64)">
+          <div>
             <div class="w3-half">
-              <h1>Votre message encodé via arbre: </br>en {{ time_arbre }}s</h1>
+              <h1>Votre message encodé via arbre </br>en {{ time_arbre }}s:</h1>
               <div class="w3-padding-32">
                 <p class="w3-text-white w3-large">{{ encoded_message_arbre }}</p>
               </div>
             </div>
             <div class="w3-rest">
-              <h1>Votre message encodé via dictionnaires: </br>en {{ time_dict }}s</h1>
+              <h1>Votre message encodé via dictionnaires </br>en {{ time_dict }}s:</h1>
               <div class="w3-padding-32">
                 <p class="w3-text-white w3-large">{{ encoded_message_arbre }}</p>
               </div>
