@@ -128,7 +128,6 @@ def e_comparer_results():
         ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
         return render_template("e_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
     else:
-        print("ok")
         file = request.files['file']
         text = file.read().decode('utf-8')
         ftext_dict, time_dict = dict_encode_message(arbre_dict, text)

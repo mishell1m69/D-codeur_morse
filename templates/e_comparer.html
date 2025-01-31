@@ -9,18 +9,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
-            <script>
-        // Utilisé pour afficher le menu lorsque l'écran est suffisament petit
-        function myFunction() {
-          var x = document.getElementById("navDemo");
-          if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-          } else { 
-            x.className = x.className.replace(" w3-show", "");
-          }
-        }
-      </script>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
+      <script src="static/script.js"></script>
     </head>
 
     <body>
@@ -62,7 +52,7 @@
               <input class="w3-input" type="text" name="texte" required>
               <label class="w3-text-white">Votre texte</label>         
               <div>
-                <button type="submit" class="w3-button w3-white w3-large w3-center w3-margin-top">Décoder</button>
+                <button type="submit" class="w3-button w3-white w3-large w3-center w3-margin-top">Encoder</button>
               </div>
             </form> 
           </div>
@@ -77,7 +67,7 @@
             <form class="w3-container w3-padding-32" method="post" action="e_comparer_resultat" enctype="multipart/form-data">
               <input type="file" name="file" accept=".txt" required>
               <div>
-                <button type="submit" class="w3-button w3-green w3-large w3-center w3-margin-top">Décoder</button>
+                <button type="submit" class="w3-button w3-green w3-large w3-center w3-margin-top">Encoder</button>
               </div>
             </form>
           </div>
