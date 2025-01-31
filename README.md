@@ -4,14 +4,15 @@ Ce projet présente un programme (une interface Web, pour être plus précis) pe
 d'encoder ou décoder un fichier (de format .txt) entier (soit en français, soit en code morse), <br>ainsi que de décoder (idem pour encoder) un fichier ou un message à la fois par arbre et par dictionnaire afin de comparer le temps que nécessitent les deux méthodes (par dictionnaire et par arbre) et en déduire celle qui est la plus efficace.
 <br>
 <br>
-Ce projet a été réalisé en Python (aditionellement, les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.<br>
+Ce projet a été réalisé en Python (avec les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.<br>
 <br>
 Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, et le site n'a présenté aucun signe de faiblesse, et nous supposons que l'on peut atteindre des niveaux de décodages biens supérieurs.<br>
 
 # Précisions préalables
 1) Le fichier D_morsage.py correspond au tp fait avant même la distribution des projets. <br>Quant au fichier D_morseur.py, c'est le fichier contenant l'arbre, le dictionnaire et les fonctions indispensables pour l'interface Web. 
 2) Les "#" (caractère inexistant dans le code morse actuel) obtenus après l'encodage des fichiers correspondent aux sauts de ligne présents dans les fichiers (de format .txt) à encoder, ce qui fait que la mise en page est respectée.
-3) Les sauts de lignes sont donc bien pris en compte.
+3) Les lettres sont séparées par des '*'  et les espaces sont représentés par des '/' en morse.
+4) Les bibliothèques Networkx et matplotlib sont uniquement utiles pour le Tp initial et non pour le site web.
 
 # Répartition des tâches & Lancement
 <i>VLAD</i> s'est chargé de :<br>
@@ -29,7 +30,7 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
 <ul>
   <li>Améliorer les algorithmes de décodage en Python (assert, saut de ligne...)</li>
   <li>Améliorer les algorithmes de codage en Python (assert, saut de ligne...)</li>
-  <li>Gérer les communication des pages HTML, des fonctions Python et des fichiers (.txt) grâce à Flask</li>
+  <li>Gérer les communications des pages HTML, des fonctions Python et des fichiers (.txt) grâce à Flask</li>
   <li>Améliorer le README</li>
   <li>Améliorer le code HTML pour prendre en charge les fichiers (de format .txt)</li>
   <li>Gérer la structure et l'arborescence de nos travaux</li>
@@ -49,12 +50,11 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
 # Comment lancer le programme?
 <ol>
   <li>Assurez vous d'avoir installé la bibliothèqu "Flask". Si vous ne l'avez pas, tapez dans la console : <code>pip install Flask</code></li>
-  <li>Assurez-vous d'avoir installé la bibliothèque "pygame". Si vous ne l'avez pas, tapez dans la console : <code>pip install pygame</code></li>
-  <li>Assurez-vous d'avoir installé la bibliothèque "networkx". Si vous ne l'avez pas, tapez dans la console : <code>pip install networkx</code></li>
-  <li>Vérifier la présence de la bibliothèque "matplotlib" (pour pouvoir tester le fichier du tp)<br>Si jamais vous ne l'avez pas installée, tapez dans la console <code>pip install matplotlib</code> pour ce faire</li>
+  <li>Pour installer la bibliothèque "matplotlib" (non essentielle), tapez dans la console : <code>pip install matplotlib</code></li>
+  <li>Pour installer la bibliothèque "networkx"(non essentielle), tapez dans la console : <code>pip install networkx</code></li>
   <li>Lancer/Exécuter le fichier main.py<br></li>
   <li>Laissez vous guider par le site</li>
-  <li>Remplissez les blocs de texte et exécutez-les</li>
+  <li>Remplissez les blocs de texte et soumettez-les</li>
   <li>Décodez et encodez vos messages !</li>
 </ol><br>
 
