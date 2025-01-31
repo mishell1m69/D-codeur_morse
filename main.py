@@ -45,7 +45,7 @@ def d_arbres_resultat():
         ftext, time = decode_message(text, arbre_alphabet_morse)
         with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-        return send_file("fichier_decode_arbre.txt", as_attachment=True)
+        return render_template("d_arbres_resultat_file.html", time = time, file_link = "fichier_decode_arbre.txt")
     
 
 @app.route('/d_dicos_resultat', methods = ['POST'])
@@ -60,7 +60,7 @@ def d_dicos_resultat():
         ftext, time = dict_decode_message(arbre_dict, text)
         with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-        return send_file("fichier_decode_dicos.txt", as_attachment=True)
+        return render_template("d_dicos_resultat_file.html", time = time, file_link = "fichier_decode_dicos.txt")
 
 @app.route('/e_arbres_resultat', methods = ['POST'])
 def e_arbres_resultat():
@@ -74,7 +74,7 @@ def e_arbres_resultat():
         ftext, time = encode_message(text, arbre_alphabet_morse)
         with open("fichier_encode_arbre.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-        return send_file("fichier_encode_arbre.txt", as_attachment=True)
+        return render_template("e_arbres_resultat_file.html", time = time, file_link = "fichier_encode_arbre.txt")
 
 @app.route('/e_dicos_resultat', methods = ['POST'])
 def e_dicos_resultat():
@@ -88,7 +88,7 @@ def e_dicos_resultat():
         ftext, time = dict_encode_message(arbre_dict, text)
         with open("fichier_encode_dicos.txt", "w", encoding="utf-8") as f:
             f.write(ftext)
-        return send_file("fichier_encode_dicos.txt", as_attachment=True)
+        return render_template("e_dicos_resultat_file.html", time = time, file_link = "fichier_encode_dicos.txt")
 
 @app.route('/comparer')
 def comparer():
@@ -112,16 +112,13 @@ def d_comparer_results():
     else:
         file = request.files['file']
         text = file.read().decode('utf-8')
-        ftext_dict, time_dict = decode_message(text, arbre_alphabet_morse)
+        ftext_dict, time_dict = dict_decode_message(arbre_dict, text)
         ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
         with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
             f.write(ftext_arbre)
         with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
             f.write(ftext_dict)
-        with open("fichier_decode_temps.txt", "w", encoding="utf-8") as f:
-            f.write("Le fichier 'fichier_decode_arbre.txt' a été généré en " + str(time_arbre) + "s.")
-            f.write("Le fichier 'fichier_decode_dicos.txt' a été généré en " + str(time_dict) + "s.")
-        return send_file("fichier_decode_arbre.txt", as_attachment=True)
+        return render_template("d_comparer_resultat_file.html", time_arbre = time_arbre, time_dict = time_dict, file_link_arbre = "fichier_decode_arbre.txt", file_link_dict = "fichier_decode_dicos.txt")
 
 @app.route('/e_comparer_resultat', methods = ['POST'])
 def e_comparer_results():
@@ -131,6 +128,19 @@ def e_comparer_results():
         ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
         return render_template("e_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
     else:
-        pass
+        print("ok")
+        file = request.files['file']
+        text = file.read().decode('utf-8')
+        ftext_dict, time_dict = dict_encode_message(arbre_dict, text)
+        ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
+        with open("fichier_encode_arbre.txt", "w", encoding="utf-8") as f:
+            f.write(ftext_arbre)
+        with open("fichier_encode_dicos.txt", "w", encoding="utf-8") as f:
+            f.write(ftext_dict)
+        return render_template("e_comparer_resultat_file.html", time_arbre = time_arbre, time_dict = time_dict, file_link_arbre = "fichier_encode_arbre.txt", file_link_dict = "fichier_encode_dicos.txt")
+
+@app.route('/download/<filename>')
+def download(filename):
+    return send_file (filename, as_attachment = True)
 
 app.run(debug=True)
