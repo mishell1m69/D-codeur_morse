@@ -206,10 +206,6 @@ def decode_message(message_code, arbre):
             elif i == "#":
                 word += '\n'
         message += word + " "
-        """if len(word)>0 and word[-1] == '\n':
-            message += word
-        else:
-            message += word + """
     return message, pf() - t0
 
 # /$$$$$$$  /$$             /$$     /$$                                         /$$                              
@@ -257,7 +253,9 @@ def dict_encode_message(arbre, message):
     for i in message:
         i = i.lower()
         if i == ' ':
-            encoded_msg += '/'
+            encoded_msg += "/"
+        elif i == '\n':
+            encoded_msg += "#*"
         else:
             if i in arbre.keys():
                 encoded_msg += arbre[i] + "*"
@@ -292,10 +290,12 @@ def dict_decode_message(arbre, message_code):
                     if tmp_lettre in tmp_dict.keys():
                         decoded_msg += tmp_dict[tmp_lettre]
                     else:
-                        return "Attention, votre message contient au moins un caractère non décodablee : " + tmp_lettre, pf() - t0
+                        return "Attention, votre message contient au moins un caractère non décodable : " + tmp_lettre, pf() - t0
                 tmp_lettre = ""
             elif j == "-" or j == "°":
                 tmp_lettre += j
+            elif j == "#" or j == '\n':
+                decoded_msg += '\n'
             else:
                 return "Attention, votre message contient au moins un caractère non décodable : " + j, pf() - t0
         decoded_msg += " "
