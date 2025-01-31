@@ -1,54 +1,70 @@
-# <li>D-codeur morse</li>
+# Le projet sur le code morse
 <i>Par APET Vlad, CHALENDARD Jao et MICHEL Clément</i> - Terminale<br><br>
-Ce projet présente un systeme d'encodage et de décodage vers du morse.<br>
-Ce projet a été réalisé en Python (avec les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.<br>
-Nous avons réalisé des tests de décodage jusqu'a 100,000 caractres, et le site n'a présenté aucun signe de faiblesse, et nous supposons que l'on peut atteindre des niveaux de décodages biens supérieurs.<br><br>
+Ce projet présente un programme (une interface Web, pour être plus précis) permettant à l'utilisateur de décoder un code écrit en morse, d'encoder un texte pour obtenir son code morse,
+d'encoder ou décoder un fichier (de format .txt) entier (soit en français, soit en code morse), ainsi que de décoder (idem pour encoder) un fichier ou un message à la fois par arbre et par dictionnaire afin de comparer le temps que nécessitent les deux méthodes (par dictionnaire et par arbre) et en déduire celle qui est la plus efficace.
+<br>
+Ce projet a été réalisé en Python (aditionellement, les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.<br>
+<br>
+Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, et le site n'a présenté aucun signe de faiblesse, et nous supposons que l'on peut atteindre des niveaux de décodages biens supérieurs.<br><br>
 
-# <li><b>Répartition des tâches & Lancement</b></li><br>
+# Précisions préalables
+1) Le fichier D_morsage.py correspond au tp fait avant même la distribution des projets. Quant au fichier D_morseur.py, c'est le fichier contenant l'arbre, le dictionnaire et les fonctions indispensables pour l'interface Web à savourer. 
+2) Les "#" (caractère inexistant dans le code morse actuel) obtenus après l'encodage des fichiers correspondent aux sauts de ligne présents dans les fichiers (de format .txt) à encoder, ce qui fait que la mise en page est respectée.
+3) Les sauts de lignes sont donc bien pris en compte.
+
+# Répartition des tâches & Lancement<br>
 <i>VLAD</i> s'est chargé de:<br>
-<ol>
-  <li style=list-style-type:circle>Réaliser le TP initial concernant le projet</li>
-  <li style=list-style-type:circle>Implémenter les différents algorithmes de décodage en Python</li>
-  <li style=list-style-type:circle>Implémenter les différents algorithmes de codage en Python</li>
-  <li style=list-style-type:circle>Améliorer la documentation (docstrings, commentaires)</li>
-  <li style=list-style-type:circle>Implémenter l' arbre morse avec plus de 65 différents caractères</li>
-</ol>
+<ul>
+  <li>Réaliser le TP initial concernant le projet<br></li>
+  <li>Implémenter les différents algorithmes de décodage en Python<br></li>
+  <li>Implémenter les différents algorithmes de codage en Python<br></li>
+  <li>Améliorer la documentation (docstrings, commentaires)<br></li>
+  <li>Rédiger le README et la documentation globale du projet<br></li>
+  <li>Renvoyer les résultats des requêtes grâce à Python (Flask) sur HTML</li>
+  <li>Effectuer des tests</li>
+</ul>
+
 <i>JAO</i> s'est chargé de:<br>
-<ol>
-  <li style=list-style-type:circle>Améliorer les différents algorithmes de décodage en Python (assert, saut de ligne...)</li>
-  <li style=list-style-type:circle>Améliorer les différents algorithmes de codage en Python (assert, saut de ligne...)</li>
-  <li style=list-style-type:circle>Gérer les communication des pages HTML, des fonctions Python et des fichiers (.txt) grâce à Flask</li>
-  <li style=list-style-type:circle>Améliorer le code l'HTML pour prendre en charge les fichiers (.txt)</li>
-  <li style=list-style-type:circle>Gérer la structure et l'arborescence de nos travaux</li>
-</ol>
+<ul>
+  <li>Implémenter les différents algorithmes de décodage en Python</li>
+  <li>Implémenter les différents algorithmes de codage en Python</li>
+  <li>Gérer les différentes connexions des pages HTML et du Python, grâce à Flask</li>
+  <li>Renvoyer les résultats des requêtes grâce à Python (Flask) sur HTML</li>
+  <li>Gérer la structure et l'arborescence de nos travaux</li>
+  <li>Effectuer des tests</li>
+</ul>
+
 <i>CLÉMENT</i> s'est chargé de:<br>
+<ul>
+  <li>Construire l'entiereté des pages HTML grâce au framework de W3.CSS</li>
+  <li>Mettre en place le design du site internet et de toutes ses pages</li>
+  <li>Gérer l'aspect "responsive" du site et sa compatibilité sur plusieurs appareils</li>
+  <li>Rédiger le README et la documentation globale du projet</li>
+  <li>Renvoyer les résultats des requêtes grâce à Python (Flask) sur HTML</li>
+  <li>Effectuer des tests</li>
+</ul><br>
+
+# Comment lancer le programme?
 <ol>
-  <li style=list-style-type:circle>Construire l'entiereté des pages HTML grâce au framework de W3.CSS</li>
-  <li style=list-style-type:circle>Mettre en place le design du site internet et de toutes ses pages</li>
-  <li style=list-style-type:circle>Gérer l'aspect "responsive" du site et sa compatibilité sur plusieurs appareils</li>
-  <li style=list-style-type:circle>Rédiger le README et la documentation globale du projet</li>
-  <li style=list-style-type:circle>Renvoyer les résultats des requêtes grâce à Python (Flask) sur HTML</li>
-</ol><br>
-<li><b>Comment lancer le site?</b></li><br>
-<ol>
-  <li>Assurez vous d'avoir installé "Flask" --> -m pip install Flask</li>
-  <li>Lancer/Exécuter le fichier main.py</li>
+  <li>Assurez-vous d'avoir installé la bibliothèque "pygame" . Si vous ne l'avez pas, tapez dans la console : <code>pip install pygame</code></li>
+  <li>Assurez-vous d'avoir installé la bibliothèque "networkx" Si vous ne l'avez pas, tapez dans la console : <code>pip install networkx</code></li>
+  <li>De même, vérifier la présence de la bibliothèque "matplotlib" (pour pouvoir tester le fichier du tp<br>
+  Si jamais vous ne l'avez pas, tapez dans la console <code>pip install matplotlib</code> pour ce faire</li>
+  <li>Lancer/Exécuter le fichier main.py<br></li>
   <li>Laissez vous guider par le site</li>
-  <li>Remplissez les blocs de texte ou uploader un fichier (.txt)</li>
-  <li>Décodez et Encodez vos messages !</li>
+  <li>Remplissez les blocs de texte et exécutez-les</li>
+  <li>Décodez un message !</li>
+  <li>Encodez un message !</li>
 </ol><br>
-<li><b>Sources ayant aidé à la réalisation du HTML/CSS/JS:</b></li><br>
-<ol>
-  <li style=list-style-type: decimal>W3 Schools CSS: https://www.w3schools.com/w3css/default.asp</li>
-  <li style=list-style-type: decimal>UIverse: https://uiverse.io/themrsami/dull-moose-46, https://uiverse.io/Juanes200122/yellow-zebra-53</li>
-</ol><br>
-<li><b>Informations pratiques:</b></li><br>
-<ol>
-  <li style=list-style-type:circle>Les lettres sont sépares par des '*' en morse</li>
-  <li style=list-style-type:circle>Les espaces sont représentés par des '/' en morse</li>
-  <li style=list-style-type:circle>Les sauts de ligne sont représentés par des '#' en morse</li>
-  <li style=list-style-type:circle>Si vous essayez d'encoder/décoder des caractères qui n'existent pas, un message vous préviendra et affichera le caractère en question</li>
-  <li style=list-style-type:circle>Le fichier nommé 'D_morsage.py' est le tp initial tandis que 'D_morseur.py' est celui utilisé par le site</li>
-</ol><br><br>
-MERCI d'avoir pris le temps de lire jusqu'ici, et bonnes découvertes!<br>
+
+# Sources 
+<dl>
+  <dt>ayant aidé à la réalisation du HTML/CSS/JS :</dt>
+  <dd>W3 Schools CSS : https://www.w3schools.com/w3css/default.asp</dd>
+  <dd>UIverse : https://uiverse.io/themrsami/dull-moose-46 et https://uiverse.io/Juanes200122/yellow-zebra-53</dd>
+  <dt>ayant aidé à la découverte du code morse :</dt>
+  <dd>Wikipedia : https://fr.wikipedia.org/wiki/Code_Morse_international</dd>
+</dl>
+<br>
+MERCI d'avoir pris le temps de lire jusqu'ici, et bonnes découvertes!
 <i>CLÉMENT, VLAD & JAO</i>
