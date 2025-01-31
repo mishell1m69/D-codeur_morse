@@ -162,8 +162,12 @@ def encode_message(message, arbre):
     :param arbre: Racine de l'arbre
     :return: Message encodé en code binaire
     """
-
     t0 = pf()
+    force = False
+    if message[:2] == "&&":
+        message = message[2:]
+        force = True
+
     encrypted = ""
     for i in message:
         if i == '\n':
@@ -174,7 +178,8 @@ def encode_message(message, arbre):
             if lettre:
                 encrypted += lettre + "*"
             else:
-                return "Attention, votre message contient au moins un caractère non encodable : " + i, pf() - t0
+                if not force:
+                    return "Attention, votre message contient au moins un caractère non encodable : " + i, pf() - t0
         else:
             encrypted += "/"
     return encrypted, pf() - t0
@@ -249,6 +254,11 @@ def dict_encode_message(arbre, message):
     """
 
     t0 = pf()
+    force = False
+    if message[:2] == "&&":
+        message = message[2:]
+        force = True
+
     encoded_msg = ''
     for i in message:
         i = i.lower()
@@ -260,7 +270,8 @@ def dict_encode_message(arbre, message):
             if i in arbre.keys():
                 encoded_msg += arbre[i] + "*"
             else:
-                return "Attention, votre message contient au moins un caractère non encodable : " + i, pf() - t0
+                if not force:
+                    return "Attention, votre message contient au moins un caractère non encodable : " + i, pf() - t0
     return encoded_msg, pf() - t0
 
 
