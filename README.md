@@ -12,24 +12,25 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
 2) Les "#" (caractère inexistant dans le code morse actuel) obtenus après l'encodage des fichiers correspondent aux sauts de ligne présents dans les fichiers (de format .txt) à encoder, ce qui fait que la mise en page est respectée.
 3) Les sauts de lignes sont donc bien pris en compte.
 
-# Répartition des tâches & Lancement<br>
-<i>VLAD</i> s'est chargé de:<br>
+# Répartition des tâches & Lancement
+<i>VLAD</i> s'est chargé de :<br>
 <ul>
   <li>Réaliser le TP initial concernant le projet<br></li>
   <li>Implémenter les différents algorithmes de décodage en Python<br></li>
   <li>Implémenter les différents algorithmes de codage en Python<br></li>
   <li>Améliorer la documentation (docstrings, commentaires)<br></li>
-  <li>Rédiger le README et la documentation globale du projet<br></li>
-  <li>Renvoyer les résultats des requêtes grâce à Python (Flask) sur HTML</li>
+  <li>Rédiger le README et documenter le projet (ses fonctions, fichiers, etc...)<br></li>
+  <li>Implémenter l'arbre morse avec plus de 65 différents caractères</li>
   <li>Effectuer des tests</li>
 </ul>
 
-<i>JAO</i> s'est chargé de:<br>
+<i>JAO</i> s'est chargé de :<br>
 <ul>
-  <li>Implémenter les différents algorithmes de décodage en Python</li>
-  <li>Implémenter les différents algorithmes de codage en Python</li>
-  <li>Gérer les différentes connexions des pages HTML et du Python, grâce à Flask</li>
-  <li>Renvoyer les résultats des requêtes grâce à Python (Flask) sur HTML</li>
+  <li>Améliorer les différents algorithmes de décodage en Python (assert, saut de ligne...)</li>
+  <li>Améliorer les différents algorithmes de codage en Python (assert, saut de ligne...)</li>
+  <li>Gérer les communication des pages HTML, des fonctions Python et des fichiers (.txt) grâce à Flask</li>
+  <li>Améliorer le README</li>
+  <li>Améliorer le code HTML pour prendre en charge les fichiers (de format .txt)</li>
   <li>Gérer la structure et l'arborescence de nos travaux</li>
   <li>Effectuer des tests</li>
 </ul>
@@ -46,6 +47,7 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
 
 # Comment lancer le programme?
 <ol>
+  <li>Assurez vous d'avoir installé la bibliothèqu "Flask" Si vous ne l'avez pas, tapez dans la console : <code>pip install Flask</code></li>
   <li>Assurez-vous d'avoir installé la bibliothèque "pygame" . Si vous ne l'avez pas, tapez dans la console : <code>pip install pygame</code></li>
   <li>Assurez-vous d'avoir installé la bibliothèque "networkx" Si vous ne l'avez pas, tapez dans la console : <code>pip install networkx</code></li>
   <li>De même, vérifier la présence de la bibliothèque "matplotlib" (pour pouvoir tester le fichier du tp<br>
@@ -53,8 +55,7 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
   <li>Lancer/Exécuter le fichier main.py<br></li>
   <li>Laissez vous guider par le site</li>
   <li>Remplissez les blocs de texte et exécutez-les</li>
-  <li>Décodez un message !</li>
-  <li>Encodez un message !</li>
+  <li>Décodez et encodez vos messages !</li>
 </ol><br>
 
 # Sources 
