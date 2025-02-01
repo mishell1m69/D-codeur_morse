@@ -45,7 +45,6 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
   <li>Mettre en place le design du site internet et de toutes ses pages</li>
   <li>Gérer l'aspect "responsive" du site et sa compatibilité sur plusieurs appareils</li>
   <li>Rédiger le README et la documentation globale du projet</li>
-  <li>Renvoyer les résultats des requêtes grâce à Python (Flask) sur HTML</li>
   <li>Effectuer des tests</li>
 </ul><br>
 
