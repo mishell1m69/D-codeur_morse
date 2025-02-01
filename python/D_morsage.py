@@ -1,11 +1,10 @@
 """Ce fichier correspond à l'intégrité du tp 
-fait avant même la distribution du projet.
-(décodage par dict à améliorer 
-(P.S. la fonction rajoute le mot "start"))"""
+fait avant même la distribution du projet."""
 
 # classe Noeud
 import networkx as nx
 import matplotlib.pyplot as plt
+
 
 class Noeud:
     '''
@@ -14,14 +13,16 @@ class Noeud:
     noeud = Noeud(valeur(str), gauche(Noeud), droit(Noeud))
     attributs d'instance : valeur, gauche, droit
     '''
-    def __init__(self, valeur, gauche = None, droit = None):
+
+    def __init__(self, valeur, gauche=None, droit=None):
         self.valeur = valeur
         self.gauche = gauche
         self.droit = droit
-        
+
     def __str__(self):
         return str(self.valeur)
-    
+
+
 # fonction hauteur
 # la hauteur de la racine est ici de 1
 # remplacer 0 par -1 si on souhaite une hauteur de 0 pour la racine
@@ -32,13 +33,14 @@ def hauteur(arbre):
         return 1 + max(hauteur(arbre.gauche), hauteur(arbre.droit))
 
 
-def repr_graph(arbre, size=(8,8), null_node=False):
+def repr_graph(arbre, size=(8, 8), null_node=False):
     """Cette fonction sert à représenter un arbre dans une fenêtre séparée.
     
     :param arbre: L'arbre fourni à représenter (de type Noeud)
     :param size: Le tuple de 2 entiers. Si size est int -> (size, size)
     :param null_node: si True, trace les liaisons vers les sous-arbres vides
     """
+
     def parkour(arbre, noeuds, branches, labels, positions, profondeur, pos_courante, pos_parent, null_node):
         if arbre is not None:
             noeuds[0].append(pos_courante)
@@ -46,46 +48,49 @@ def repr_graph(arbre, size=(8,8), null_node=False):
             profondeur -= 1
             labels[pos_courante] = str(arbre.valeur)
             branches[0].append((pos_courante, pos_parent))
-            pos_gauche = pos_courante - 2**profondeur
+            pos_gauche = pos_courante - 2 ** profondeur
             parkour(arbre.gauche, noeuds, branches, labels, positions, profondeur, pos_gauche, pos_courante, null_node)
-            pos_droit = pos_courante + 2**profondeur
+            pos_droit = pos_courante + 2 ** profondeur
             parkour(arbre.droit, noeuds, branches, labels, positions, profondeur, pos_droit, pos_courante, null_node)
         elif null_node:
             noeuds[1].append(pos_courante)
             positions[pos_courante] = (pos_courante, profondeur)
             branches[1].append((pos_courante, pos_parent))
-    
-    
+
     if arbre is None:
         return
-    
+
     branches = [[]]
     profondeur = hauteur(arbre)
-    pos_courante = 2**profondeur
+    pos_courante = 2 ** profondeur
     noeuds = [[pos_courante]]
-    positions = {pos_courante: (pos_courante, profondeur)} 
+    positions = {pos_courante: (pos_courante, profondeur)}
     labels = {pos_courante: str(arbre.valeur)}
-    
+
     if null_node:
         branches.append([])
         noeuds.append([])
 
     profondeur -= 1
-    parkour(arbre.gauche, noeuds, branches, labels, positions, profondeur, pos_courante - 2**profondeur, pos_courante, null_node)
-    parkour(arbre.droit, noeuds, branches, labels, positions, profondeur, pos_courante + 2**profondeur, pos_courante, null_node) 
+    parkour(arbre.gauche, noeuds, branches, labels, positions, profondeur, pos_courante - 2 ** profondeur, pos_courante,
+            null_node)
+    parkour(arbre.droit, noeuds, branches, labels, positions, profondeur, pos_courante + 2 ** profondeur, pos_courante,
+            null_node)
 
     mon_arbre = nx.Graph()
-    
+
     if type(size) == int:
-        size = (size, size)    
+        size = (size, size)
     plt.figure(figsize=size)
-    
-    nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[0], node_color="white", node_size=550, edgecolors="blue")
+
+    nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[0], node_color="white", node_size=550,
+                           edgecolors="blue")
     nx.draw_networkx_edges(mon_arbre, positions, edgelist=branches[0], edge_color="black", width=2)
     nx.draw_networkx_labels(mon_arbre, positions, labels)
 
     if null_node:
-        nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[1], node_color="white", node_size=50, edgecolors="grey")
+        nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[1], node_color="white", node_size=50,
+                               edgecolors="grey")
         nx.draw_networkx_edges(mon_arbre, positions, edgelist=branches[1], edge_color="grey", width=1)
 
     ax = plt.gca()
@@ -107,44 +112,43 @@ arbre1 = Noeud('racine',rg,rd)
 repr_graph(arbre1,(3,3),True)
 """
 
-
 # à faire 1
 # Créer la représentation de l'abre morse, on se bornera aux lettres de l'alphabet...
-print("\nA faire 1 : C\'est fait")
-q=Noeud("Q")
-z=Noeud("Z")
-y=Noeud("Y")
-c=Noeud("C")
-x=Noeud("X")
-b=Noeud("B")
-j=Noeud("J")
-p=Noeud("P")
-l=Noeud("L")
-f=Noeud("F")
-v=Noeud("V")
-h=Noeud("H")
-o=Noeud("O")
-g=Noeud("G", z, q)
-k=Noeud("K", c, y)
-d=Noeud("D", b, x)
-w=Noeud("W", p, j)
-r=Noeud("R", l)
-u=Noeud("U", f)
-s=Noeud("S", h, v)
-a=Noeud("A", r, w)
-i=Noeud("I", s, u)
-m=Noeud("M", g, o)
-n=Noeud("N", d, k)
-e=Noeud("E", i, a)
-t=Noeud("T", n, m)
-alpharbre=Noeud('Start',e,t)
+print("\nA faire 1 : L\'arbre est créé (cf. la fenêtre apparue)")
+q = Noeud("Q")
+z = Noeud("Z")
+y = Noeud("Y")
+c = Noeud("C")
+x = Noeud("X")
+b = Noeud("B")
+j = Noeud("J")
+p = Noeud("P")
+l = Noeud("L")
+f = Noeud("F")
+v = Noeud("V")
+h = Noeud("H")
+o = Noeud("O")
+g = Noeud("G", z, q)
+k = Noeud("K", c, y)
+d = Noeud("D", b, x)
+w = Noeud("W", p, j)
+r = Noeud("R", l)
+u = Noeud("U", f)
+s = Noeud("S", h, v)
+a = Noeud("A", r, w)
+i = Noeud("I", s, u)
+m = Noeud("M", g, o)
+n = Noeud("N", d, k)
+e = Noeud("E", i, a)
+t = Noeud("T", n, m)
+alpharbre = Noeud('Start', e, t)
 # On l'affiche, pour le coup :
-repr_graph(alpharbre,(10,10),True)
+repr_graph(alpharbre, (10, 10), True)
 
-print("\nA faire 2 : Le code -°-° correspond à la lettre : ", end="")
+print("\nA faire 2 : La fonction decode_lettre(arbre,code) est créée et le code -°-° correspond à la lettre : ", end="")
 
 
-def decode_lettre(arbre,code):
+def decode_lettre(arbre, code):
     """Cette fonction sert à obtenir la lettre d'un code morse fourni.
     
     :param arbre: L'arbre de l'alphabet de Morse (de type Noeud)
@@ -161,11 +165,12 @@ def decode_lettre(arbre,code):
             return False
     return arbre.valeur
 
+
 # Test :
-print(decode_lettre(alpharbre,'-°-°'))
+# print(decode_lettre(alpharbre, '-°-°'))
 
 
-def encode_lettre(lettre,chemin,arbre):
+def encode_lettre(lettre, chemin, arbre):
     """Cette fonction sert à obtenir le code morse d'une lettre fournie.
     
     :param lettre: La lettre à encoder (de type str)
@@ -184,10 +189,10 @@ def encode_lettre(lettre,chemin,arbre):
 
 
 # Test :
-print(encode_lettre('R',"",alpharbre))
+print(encode_lettre('R', "", alpharbre))
 
 
-def encode_message(message,arbre):
+def encode_message(message, arbre):
     """Cette fonction sert à obtenir le code morse d'une phrase fournie par l'utilisateur. 
 
     :param message: Une phrase à encoder (de type str)
@@ -201,14 +206,15 @@ def encode_message(message,arbre):
             i = i.upper()
         else:
             encrypted += "/"
-        if len(encrypted)>0:
+        if len(encrypted) > 0:
             encrypted += "*"
         encrypted += encode_lettre(i, "", alpharbre)
     return encrypted + "*"
 
 
 # Test :
-print("\nA faire 3 : La phrase \'sos\' en code morse est : ", end="")
+print("\nA faire 3 : La fonction encode_message(message,arbre) est faite et la phrase \'sos\' en code morse est : ",
+      end="")
 print(encode_message('sos', alpharbre))
 
 
@@ -229,18 +235,23 @@ def decode_message(message_code, arbre):
         word = ""
         for j in i:
             if j != '':
-                word += decode_lettre(alpharbre, j)
+                word += decode_lettre(arbre, j)
         message += word + " "
     return message
 
 
+print("\nA faire 4 : La fonction decode_message(message_code,arbre) est implementée (cf. le code à la ligne 223).")
+
 # Test :
-print("\nA faire 5 donne :", decode_message('-°°°*°-°*°-*°°°-*---*/*°---*°*°°-*-°*°*/*°--°*°-*-°°*°-*°--*°-*-°*/*°-°°*°-*/*-°*°°°*°°*/*°*°°°*-*/*°-*°°°-*°*-°-°*/*-*---*°°*', alpharbre))
+print("\nA faire 5 le code \'-°°°*°-°*°-*°°°-*---*/*°---*°*°°-*-°*°*/*°--°*°-*-°°*°-*°--*°-*-°*/*°-°°*°-*"
+      "/*-°*°°°*°°*/*°*°°°*-*/*°-*°°°-*°*-°-°*/*-*---*°°*\' veut dire en français :", decode_message(
+    '-°°°*°-°*°-*°°°-*---*/*°---*°*°°-*-°*°*/*°--°*°-*-°°*°-*°--*°-*-°*/*°-°°*°-*/*-°*°°°*°°*/*°*°°°*-*/*°-*°°°-*°*-°-°*/*-*---*°°*',
+    alpharbre))
 
-print("\nA faire 6 :")
+print("\nA faire 6 (Questions) :")
 
 
-def dictionnaire(arbre,chemin,dico):
+def dictionnaire(arbre, chemin, dico):
     """Cette fonction sert à créer le dictionnaire de l'arbre de l'alphabet morse.
 
     :param arbre: L'alphabet morse donné (de type Noeud)
@@ -279,30 +290,33 @@ def dict_decode_message(arbre, message_code):
     :return: Renvoie un message décodé sous forme d'une phrase en français.
     """
     decoded_msg = ''
-    # On crée un autre dictionaire de l'aphabet morse
+    # On crée un autre dictionaire de l'alphabet morse
+    # dont les clés et les valeurs sont inversées
     # pour pouvoir décoder le message plus rapidement.
     tmp_dict = dict()
     tmp_message_code = list(message_code.split("/"))
+    lettres_code_liste = []
+    for i in tmp_message_code:
+        tmp_lettre_code = list(i.split("*"))
+        lettres_code_liste.append(tmp_lettre_code)
     for cle, valeur in arbre.items():
         # On inverse les cles et les valeurs de l'arbre défini par dict.
         # Pour pouvoir directement et plus facilement retrouver une lettre.
         tmp_dict[valeur] = cle
-    for i in tmp_message_code:
-        tmp_lettre = ""
+    for i in lettres_code_liste:
+        tmp_mot = ""
         for j in i:
-            if j == '*':
-                decoded_msg += tmp_dict[tmp_lettre]
-                tmp_lettre = ""
-            else:
-                tmp_lettre += j
-        decoded_msg += " "
+            if j != '':
+                tmp_mot += tmp_dict[j]
+        decoded_msg += tmp_mot + " "
     return decoded_msg
 
 
 # Test :
 print("On decode le message "
       "-°°°*°-°*°-*°°°-*---*/*°---*°*°°-*-°*°*/*°--°*°-*-°°*°-*°--*°-*-°*/*°-°°*°-*/*-°*°°°*°°*/*°*°°°*-*/*°-*°°°-*°*-°-°*"
-      "/*-*---*°°* par dict et on obtient :", dict_decode_message(arbre_dict, '-°°°*°-°*°-*°°°-*---*/*°---*°*°°-*-°*°*/*°--°*°-*-°°*°-*°--*°-*-°*/*°-°°*°-*/*-°*°°°*°°*/*°*°°°*-*/*°-*°°°-*°*-°-°*/*-*---*°°*'))
+      "/*-*---*°°* par dict et on obtient :", dict_decode_message(arbre_dict,
+                                                                  '-°°°*°-°*°-*°°°-*---*/*°---*°*°°-*-°*°*/*°--°*°-*-°°*°-*°--*°-*-°*/*°-°°*°-*/*-°*°°°*°°*/*°*°°°*-*/*°-*°°°-*°*-°-°*/*-*---*°°*'))
 
 
 def dict_encode_message(arbre, message):
@@ -325,4 +339,5 @@ def dict_encode_message(arbre, message):
 
 
 # Test :
-print("On encode ensuite la phrase \'sos sos sos sos sos sos sos sos\' par dict et on obtient :", dict_encode_message(arbre_dict, 'sos sos sos SOS sos sos sos SOS'))
+print("On encode ensuite la phrase \'sos sos sos sos sos sos sos sos\' par dict et on obtient :",
+      dict_encode_message(arbre_dict, 'sos sos sos SOS sos sos sos SOS'))
