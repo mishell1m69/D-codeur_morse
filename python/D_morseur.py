@@ -121,10 +121,10 @@ def hauteur(arbre):
 
 
 def decode_lettre(arbre, code):
-    """Décode une lettre à l'aide d'un code binaire.
+    """Décode une lettre en morse.
 
     :param arbre: Racine de l'arbre
-    :param code: Code binaire pour la lettre
+    :param code: lettre en morse
     :return: Lettre décodée
     """
     for i in code:
@@ -138,12 +138,12 @@ def decode_lettre(arbre, code):
 
 
 def encode_lettre(lettre, chemin, arbre):
-    """Encode une lettre en code binaire.
+    """Encode une lettre en morse.
 
     :param lettre: Lettre à encoder
     :param chemin: Chemin binaire actuel
     :param arbre: Racine de l'arbre
-    :return: Code binaire pour la lettre
+    :return: Code morse de la lettre
     """
     if arbre is None:
         return ""
@@ -158,11 +158,11 @@ def encode_lettre(lettre, chemin, arbre):
 
 
 def encode_message(message, arbre):
-    """Encode un message entier en code binaire en utilisant l'arbre.
+    """Encode un message entier en code morse en utilisant l'arbre.
 
     :param message: Message à encoder
     :param arbre: Racine de l'arbre
-    :return: Message encodé en code binaire
+    :return: Message encodé en code morse
     """
     t0 = pf()
     force = False
@@ -188,9 +188,9 @@ def encode_message(message, arbre):
 
 
 def decode_message(message_code, arbre):
-    """Décode un message codé en binaire en utilisant l'arbre.
+    """Décode un message codé en morse en utilisant l'arbre.
 
-    :param message_code: Message encodé en code binaire
+    :param message_code: Message encodé en code morse
     :param arbre: Racine de l'arbre
     :return: Message décodé
     """
@@ -225,12 +225,12 @@ def decode_message(message_code, arbre):
 #|_______/ |__/ \_______/   \___/  |__/ \______/ |__/  |__/|__/  |__/ \_______/|__/|__/       \_______/|_______/ 
 
 def dictionnaire(arbre, chemin, dico):
-    """Génère un dictionnaire des codes binaires pour chaque lettre dans l'arbre.
+    """Génère un dictionnaire du code morse correspondant aux noeuds de l'arbre.
 
     :param arbre: Racine de l'arbre
     :param chemin: Chemin binaire actuel
-    :param dico: Dictionnaire des codes binaires
-    :return: Dictionnaire des codes binaires
+    :param dico: Dictionnaire code morse
+    :return: Dictionnaire code morse
     """
     if arbre is not None:
         if arbre.valeur != "":
