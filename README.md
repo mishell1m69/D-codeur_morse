@@ -1,7 +1,7 @@
 # Le projet sur le code morse
 <i>Par APET Vlad, CHALENDARD Jao et MICHEL Clément</i> - Terminale<br><br>
-Ce projet présente un programme (une interface Web, pour être plus précis) permettant à l'utilisateur de décoder un code écrit en morse, <br>d'encoder un texte pour obtenir son code morse,
-d'encoder ou décoder un fichier (de format .txt) entier (soit en français, soit en code morse), <br>ainsi que de décoder (idem pour encoder) un fichier ou un message à la fois par arbre et par dictionnaire afin de comparer le temps que nécessitent les deux méthodes (par dictionnaire et par arbre) et en déduire celle qui est la plus efficace.
+Ce projet présente un programme (une interface Web, pour être plus précis) permettant à l'utilisateur de décoder un code écrit en morse, d'encoder un texte pour obtenir son code morse,
+d'encoder ou décoder un fichier (de format .txt) entier (soit en français, soit en code morse), ainsi que de décoder (idem pour encoder) un fichier ou un message à la fois par arbre et par dictionnaire afin de comparer le temps que nécessitent les deux méthodes (par dictionnaire et par arbre) et en déduire celle qui est la plus efficace.
 <br>
 <br>
 Ce projet a été réalisé en Python (avec les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.<br>
@@ -10,11 +10,12 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
 
 # Précisions préalables
 1) Le fichier D_morsage.py correspond au tp et D_morseur.py est le fichier contenant les fonctions et variables indispensables pour l'interface Web. 
-2) Les "#*" correspondent aux sauts de ligne présents dans les fichiers (de format .txt) après encodage, ainsi la mise en page est respectée. (ceci est notre propre fonctionnalité développée)
+2) Les "#*" correspondent aux sauts de ligne présents dans les fichiers (de format .txt) après encodage, ainsi la mise en page est respectée. (ceci est une fonctionnalité que nous avons ajoutée)
 3) Les lettres sont séparées par des '*'  et les espaces sont représentés par des '/' en morse.
 4) Les bibliothèques Networkx et matplotlib sont uniquement utiles pour le Tp initial et non pour le site web.
 5) Si vous essayez d'encoder un caractère qui n'existe pas en morse, un message vous préviendra et affichera ce caractère soit sur le site soit dans le fichier encodé.
 6) Il est possible de 'bypass' la fonction précédente en commençant le texte à encoder par '&&' afin que les caractères intranscribtiples soit totalement ignorés (fonctionnel sur site et fichiers).
+7) La méthode de 'bypass' est fortement recomandée pour les fichiers (.txt) surtout si ils contiennent beaucoup de texte, afin d'être sûr que les fichiers seront encodés entièrement. 
 
 # Répartition des tâches & Lancement
 <i>VLAD</i> s'est chargé de :<br>
