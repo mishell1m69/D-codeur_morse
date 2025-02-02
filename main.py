@@ -41,11 +41,15 @@ def d_arbres_resultat():
         return render_template("d_arbres_resultat.html", decoded_message = ftext, time = time)
     else:
         file = request.files['file']
-        text = file.read().decode('utf-8')
-        ftext, time = decode_message(text, arbre_alphabet_morse)
-        with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
-            f.write(ftext)
-        return render_template("d_arbres_resultat_file.html", time = time, file_link = "fichier_decode_arbre.txt")
+        try:
+            text = file.read().decode('utf-8')
+            ftext, time = decode_message(text, arbre_alphabet_morse)
+            with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
+                f.write(ftext)
+            return render_template("d_arbres_resultat_file.html", time = time, file_link = "fichier_decode_arbre.txt")
+        except:
+            ftext, time = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            return render_template("d_arbres_resultat.html", decoded_message = ftext, time = time)
     
 
 @app.route('/d_dicos_resultat', methods = ['POST'])
@@ -56,11 +60,15 @@ def d_dicos_resultat():
         return render_template("d_dicos_resultat.html", decoded_message = ftext, time = time)
     else:
         file = request.files['file']
-        text = file.read().decode('utf-8')
-        ftext, time = dict_decode_message(arbre_dict, text)
-        with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
-            f.write(ftext)
-        return render_template("d_dicos_resultat_file.html", time = time, file_link = "fichier_decode_dicos.txt")
+        try:
+            text = file.read().decode('utf-8')
+            ftext, time = dict_decode_message(arbre_dict, text)
+            with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
+                f.write(ftext)
+            return render_template("d_dicos_resultat_file.html", time = time, file_link = "fichier_decode_dicos.txt")
+        except:
+            ftext, time = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            return render_template("d_dicos_resultat.html", decoded_message = ftext, time = time)
 
 @app.route('/e_arbres_resultat', methods = ['POST'])
 def e_arbres_resultat():
@@ -70,11 +78,15 @@ def e_arbres_resultat():
         return render_template("e_arbres_resultat.html", encoded_message = ftext, time = time)
     else:
         file = request.files['file']
-        text = file.read().decode('utf-8')
-        ftext, time = encode_message(text, arbre_alphabet_morse)
-        with open("fichier_encode_arbre.txt", "w", encoding="utf-8") as f:
-            f.write(ftext)
-        return render_template("e_arbres_resultat_file.html", time = time, file_link = "fichier_encode_arbre.txt")
+        try:
+            text = file.read().decode('utf-8')
+            ftext, time = encode_message(text, arbre_alphabet_morse)
+            with open("fichier_encode_arbre.txt", "w", encoding="utf-8") as f:
+                f.write(ftext)
+            return render_template("e_arbres_resultat_file.html", time = time, file_link = "fichier_encode_arbre.txt")
+        except:
+            ftext, time = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            return render_template("e_arbres_resultat.html", encoded_message = ftext, time = time)
 
 @app.route('/e_dicos_resultat', methods = ['POST'])
 def e_dicos_resultat():
@@ -84,11 +96,15 @@ def e_dicos_resultat():
         return render_template("e_dicos_resultat.html", encoded_message = ftext, time = time)
     else:
         file = request.files['file']
-        text = file.read().decode('utf-8')
-        ftext, time = dict_encode_message(arbre_dict, text)
-        with open("fichier_encode_dicos.txt", "w", encoding="utf-8") as f:
-            f.write(ftext)
-        return render_template("e_dicos_resultat_file.html", time = time, file_link = "fichier_encode_dicos.txt")
+        try:
+            text = file.read().decode('utf-8')
+            ftext, time = dict_encode_message(arbre_dict, text)
+            with open("fichier_encode_dicos.txt", "w", encoding="utf-8") as f:
+                f.write(ftext)
+            return render_template("e_dicos_resultat_file.html", time = time, file_link = "fichier_encode_dicos.txt")
+        except:
+            ftext, time = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            return render_template("e_dicos_resultat.html", encoded_message = ftext, time = time)
 
 @app.route('/comparer')
 def comparer():
@@ -111,14 +127,19 @@ def d_comparer_results():
         return render_template("d_comparer_resultat.html", decoded_message_dict = ftext_dict, decoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
     else:
         file = request.files['file']
-        text = file.read().decode('utf-8')
-        ftext_dict, time_dict = dict_decode_message(arbre_dict, text)
-        ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
-        with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
-            f.write(ftext_arbre)
-        with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
-            f.write(ftext_dict)
-        return render_template("d_comparer_resultat_file.html", time_arbre = time_arbre, time_dict = time_dict, file_link_arbre = "fichier_decode_arbre.txt", file_link_dict = "fichier_decode_dicos.txt")
+        try:
+            text = file.read().decode('utf-8')
+            ftext_dict, time_dict = dict_decode_message(arbre_dict, text)
+            ftext_arbre, time_arbre = decode_message(text, arbre_alphabet_morse)
+            with open("fichier_decode_arbre.txt", "w", encoding="utf-8") as f:
+                f.write(ftext_arbre)
+            with open("fichier_decode_dicos.txt", "w", encoding="utf-8") as f:
+                f.write(ftext_dict)
+            return render_template("d_comparer_resultat_file.html", time_arbre = time_arbre, time_dict = time_dict, file_link_arbre = "fichier_decode_arbre.txt", file_link_dict = "fichier_decode_dicos.txt")
+        except:
+            ftext_dict, time_dict = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            ftext_arbre, time_arbre = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            return render_template("d_comparer_resultat.html", decoded_message_dict = ftext_dict, decoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
 
 @app.route('/e_comparer_resultat', methods = ['POST'])
 def e_comparer_results():
@@ -129,14 +150,19 @@ def e_comparer_results():
         return render_template("e_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
     else:
         file = request.files['file']
-        text = file.read().decode('utf-8')
-        ftext_dict, time_dict = dict_encode_message(arbre_dict, text)
-        ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
-        with open("fichier_encode_arbre.txt", "w", encoding="utf-8") as f:
-            f.write(ftext_arbre)
-        with open("fichier_encode_dicos.txt", "w", encoding="utf-8") as f:
-            f.write(ftext_dict)
-        return render_template("e_comparer_resultat_file.html", time_arbre = time_arbre, time_dict = time_dict, file_link_arbre = "fichier_encode_arbre.txt", file_link_dict = "fichier_encode_dicos.txt")
+        try:
+            text = file.read().decode('utf-8')
+            ftext_dict, time_dict = dict_encode_message(arbre_dict, text)
+            ftext_arbre, time_arbre = encode_message(text, arbre_alphabet_morse)
+            with open("fichier_encode_arbre.txt", "w", encoding="utf-8") as f:
+                f.write(ftext_arbre)
+            with open("fichier_encode_dicos.txt", "w", encoding="utf-8") as f:
+                f.write(ftext_dict)
+            return render_template("e_comparer_resultat_file.html", time_arbre = time_arbre, time_dict = time_dict, file_link_arbre = "fichier_encode_arbre.txt", file_link_dict = "fichier_encode_dicos.txt")
+        except:
+            ftext_dict, time_dict = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            ftext_arbre, time_arbre = "Le fichier n'a pas pu être être lu correctement, veuillez vous assurez que ce soit bien un .txt !", 0
+            return render_template("e_comparer_resultat.html", encoded_message_dict = ftext_dict, encoded_message_arbre = ftext_arbre, time_arbre = time_arbre, time_dict = time_dict)
 
 @app.route('/download/<filename>')
 def download(filename):
