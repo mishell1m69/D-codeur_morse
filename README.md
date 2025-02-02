@@ -14,7 +14,7 @@ Nous avons réalisé des tests de décodage allant jusqu'a 100,000 caractères, 
 3) Les lettres sont séparées par des '*'  et les espaces sont représentés par des '/' en morse.
 4) Les bibliothèques Networkx et matplotlib sont uniquement utiles pour le Tp initial et non pour le site web.
 5) Si vous essayez d'encoder un caractère qui n'existe pas en morse, un message vous préviendra et affichera ce caractère soit sur le site soit dans le fichier encodé.
-6) Il est possible de 'bypass' la fonction d'encodage en commençant le texte à encoder par '&&' afin que les caractères intranscribtiples soit totalement ignorés et que le résultat soit obtenu malgré ces caractères (fonctionnel sur site et fichiers).
+6) Il est possible de 'bypass' la fonction précédente en commençant le texte à encoder par '&&' afin que les caractères intranscribtiples soit totalement ignorés et que le résultat soit obtenu malgré ces caractères (fonctionnel sur site et fichiers).
 7) La méthode de 'bypass' est fortement recomandée pour les fichiers (.txt) surtout si ils contiennent beaucoup de texte, afin d'être sûr que les fichiers seront encodés entièrement.
 8) Lorsque vous séléctionnez l'option pour encoder/décoder un fichier, l'explorateur vous proposera uniquement des fichiers texte. Si toutefois vous séléctionnez un autre type, indécodable en morse, un message d'erreur de lecture du fichier s'affichera.
 
