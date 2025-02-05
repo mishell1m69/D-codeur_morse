@@ -6,7 +6,7 @@ d'encoder ou décoder un fichier (de format .txt) entier (soit en français, soi
 <br>
 Ce projet a été réalisé en Python (avec les bibliothèques: Flask, Networkx, Matplotlib...) pour la partie algorithmique, et en HTML/CSS/JS pour l'interface web.<br>
 <br>
-Nous avons réalisé des tests de décodage en décodant le texte complet des Misérables de Victor Hugo copié et collé environ 30 fois dans le même fichier, d'où il resulte un fichier .txt de +210 Mo et environ 155.000.000 de caractères morse<br>
+Nous avons réalisé des tests de décodage en décodant le texte complet des Misérables de Victor Hugo copié et collé précisément 70 fois dans le même fichier, d'où il resulte un fichier .txt de +210 Mo et environ 155.000.000 de caractères morse<br>
 
 # Précisions préalables
 1) Le fichier D_morsage.py correspond au tp et D_morseur.py est le fichier contenant les fonctions et variables indispensables pour l'interface Web. 
